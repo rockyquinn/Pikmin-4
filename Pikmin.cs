@@ -153,6 +153,27 @@ namespace Pikmin_4
                     height = 0;
                 }
             }
+            else if (type.Equals("white"))
+            {
+                if (level == 1)
+                {
+                    rightAnimation.Add(IMAGES["whiteLeafRight1"]);
+                    rightAnimation.Add(IMAGES["whiteLeafRight2"]);
+                    rightAnimation.Add(IMAGES["whiteLeafRight3"]);
+                }
+                else if (level == 2)
+                {
+                    rightAnimation.Add(IMAGES["whiteBudRight1"]);
+                    rightAnimation.Add(IMAGES["whiteBudRight2"]);
+                    rightAnimation.Add(IMAGES["whiteBudRight3"]);
+                }
+                else
+                {
+                    rightAnimation.Add(IMAGES["whiteFlowerRight1"]);
+                    rightAnimation.Add(IMAGES["whiteFlowerRight2"]);
+                    rightAnimation.Add(IMAGES["whiteFlowerRight3"]);
+                }
+            }
         }
         ///////////////////////
         //End of initImages()//
