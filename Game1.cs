@@ -18,7 +18,7 @@ namespace Pikmin_4
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public static Dictionary<String, Texture2D> TITLE_IMAGES;
+        public static Dictionary<String, Texture2D> TITLE_IMAGES,PIKMIN_IMAGES,PLAYER_IMAGES;
 
         public Game1()
             : base()
@@ -37,6 +37,8 @@ namespace Pikmin_4
         {
             // TODO: Add your initialization logic here
             TITLE_IMAGES = new Dictionary<String, Texture2D>();
+            PIKMIN_IMAGES = new Dictionary<String, Texture2D>();
+            PLAYER_IMAGES = new Dictionary<String, Texture2D>();
 
             base.Initialize();
         }
@@ -58,6 +60,42 @@ namespace Pikmin_4
             TITLE_IMAGES.Add("purpleLeaf", Content.Load<Texture2D>("title/Leaf_Purple_Pikmin_Front"));
             TITLE_IMAGES.Add("rockLeaf", Content.Load<Texture2D>("title/Leaf_Rock_Pikmin_Front"));
             TITLE_IMAGES.Add("flyingLeaf", Content.Load<Texture2D>("title/Leaf_Flying_Pikmin_Front"));
+
+
+            PLAYER_IMAGES.Add("olimarRight1", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk1"));
+            PLAYER_IMAGES.Add("olimarRight2", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk2"));
+            PLAYER_IMAGES.Add("olimarRight3", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk3"));
+
+
+            PIKMIN_IMAGES.Add("blueLeafRight1", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("blueLeafRight2", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("blueLeafRight3", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("blueBudRight1", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_1"));
+            PIKMIN_IMAGES.Add("blueBudRight2", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_2"));
+            PIKMIN_IMAGES.Add("blueBudRight3", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_3"));
+            PIKMIN_IMAGES.Add("blueFlowerRight1", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_1"));
+            PIKMIN_IMAGES.Add("blueFlowerRight2", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_2"));
+            PIKMIN_IMAGES.Add("blueFlowerRight3", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_3"));
+
+            PIKMIN_IMAGES.Add("redLeafRight1", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("redLeafRight2", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("redLeafRight3", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("redBudRight1", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_1"));
+            PIKMIN_IMAGES.Add("redBudRight2", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_2"));
+            PIKMIN_IMAGES.Add("redBudRight3", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_3"));
+            PIKMIN_IMAGES.Add("redFlowerRight1", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_1"));
+            PIKMIN_IMAGES.Add("redFlowerRight2", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_2"));
+            PIKMIN_IMAGES.Add("redFlowerRight3", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_3"));
+
+            PIKMIN_IMAGES.Add("yellowLeafRight1", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("yellowLeafRight2", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("yellowLeafRight3", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("yellowBudRight1", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_1"));
+            PIKMIN_IMAGES.Add("yellowBudRight2", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_2"));
+            PIKMIN_IMAGES.Add("yellowBudRight3", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_3"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight1", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_1"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight2", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_2"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight3", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_3"));
         }
 
         /// <summary>
