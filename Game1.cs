@@ -18,7 +18,36 @@ namespace Pikmin_4
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        public static Dictionary<String, Texture2D> TITLE_IMAGES,PIKMIN_IMAGES,PLAYER_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used in the title screen
+        /// </summary>
+        public static Dictionary<String, Texture2D> TITLE_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used for the pikmin
+        /// </summary>
+        public static Dictionary<String, Texture2D> PIKMIN_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used for the playable Characters
+        /// </summary>
+        public static Dictionary<String, Texture2D> PLAYER_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used for enemies
+        /// </summary>
+        public static Dictionary<String, Texture2D> ENEMY_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used for walls with collisions
+        /// </summary>
+        public static Dictionary<String, Texture2D> FOREGROUND_IMAGES;
+
+        /// <summary>
+        /// Dictionary of all images used for the background
+        /// </summary>
+        public static Dictionary<String, Texture2D> BACKGROUND_IMAGES;
 
         public Game1()
             : base()
@@ -35,7 +64,8 @@ namespace Pikmin_4
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            graphics.PreferredBackBufferHeight = 600;
+            graphics.PreferredBackBufferWidth = 800;
             TITLE_IMAGES = new Dictionary<String, Texture2D>();
             PIKMIN_IMAGES = new Dictionary<String, Texture2D>();
             PLAYER_IMAGES = new Dictionary<String, Texture2D>();
@@ -49,8 +79,9 @@ namespace Pikmin_4
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Adds all the images for the title screen to this dictionary.
             TITLE_IMAGES.Add("background", Content.Load<Texture2D>("title/background"));
             TITLE_IMAGES.Add("pikminFamily", Content.Load<Texture2D>("title/Pikmin_Family"));
             TITLE_IMAGES.Add("blueLeaf", Content.Load<Texture2D>("title/Leaf_Blue_Pikmin_Front"));
@@ -61,12 +92,12 @@ namespace Pikmin_4
             TITLE_IMAGES.Add("rockLeaf", Content.Load<Texture2D>("title/Leaf_Rock_Pikmin_Front"));
             TITLE_IMAGES.Add("flyingLeaf", Content.Load<Texture2D>("title/Leaf_Flying_Pikmin_Front"));
 
-
+            // Adds all the images for playable characters to this dictionary.
             PLAYER_IMAGES.Add("olimarRight1", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk1"));
             PLAYER_IMAGES.Add("olimarRight2", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk2"));
             PLAYER_IMAGES.Add("olimarRight3", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk3"));
 
-
+            // Adds all the images for pikmin to this dictionary.
             PIKMIN_IMAGES.Add("blueLeafRight1", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_1"));
             PIKMIN_IMAGES.Add("blueLeafRight2", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_2"));
             PIKMIN_IMAGES.Add("blueLeafRight3", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_3"));
@@ -96,6 +127,16 @@ namespace Pikmin_4
             PIKMIN_IMAGES.Add("yellowFlowerRight1", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_1"));
             PIKMIN_IMAGES.Add("yellowFlowerRight2", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_2"));
             PIKMIN_IMAGES.Add("yellowFlowerRight3", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_3"));
+
+            PIKMIN_IMAGES.Add("whiteLeafRight1", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("whiteLeafRight2", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("whiteLeafRight3", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("whiteBudRight1", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_1"));
+            PIKMIN_IMAGES.Add("whiteBudRight2", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_2"));
+            PIKMIN_IMAGES.Add("whiteBudRight3", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_3"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight1", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_1"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight2", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_2"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight3", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_3"));
         }
 
         /// <summary>
@@ -130,7 +171,13 @@ namespace Pikmin_4
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
+
+            //spriteBatch.Draw(TITLE_IMAGES["background"]);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
