@@ -20,6 +20,21 @@ namespace Pikmin_4
         SpriteBatch spriteBatch;
 
         /// <summary>
+        /// contains the state of the game and what panel is currently displayed
+        /// </summary>
+        String baseState;
+
+        /// <summary>
+        /// Used to maintain the keys pressed.
+        /// </summary>
+        KeyboardState kbState,oldkbState;
+
+        /// <summary>
+        /// Used to maintain the cursors information
+        /// </summary>
+        MouseState mState,oldmState;
+
+        /// <summary>
         /// Dictionary of all images used in the title screen
         /// </summary>
         public static Dictionary<String, Texture2D> TITLE_IMAGES;
@@ -66,9 +81,17 @@ namespace Pikmin_4
         {
             graphics.PreferredBackBufferHeight = 600;
             graphics.PreferredBackBufferWidth = 800;
+
             TITLE_IMAGES = new Dictionary<String, Texture2D>();
             PIKMIN_IMAGES = new Dictionary<String, Texture2D>();
             PLAYER_IMAGES = new Dictionary<String, Texture2D>();
+            ENEMY_IMAGES = new Dictionary<string, Texture2D>();
+            BACKGROUND_IMAGES = new Dictionary<string, Texture2D>();
+            FOREGROUND_IMAGES = new Dictionary<string, Texture2D>();
+
+            kbState = new KeyboardState();
+            mState = new MouseState();
+            baseState = "main";
 
             base.Initialize();
         }
@@ -83,6 +106,7 @@ namespace Pikmin_4
 
             // Adds all the images for the title screen to this dictionary.
             TITLE_IMAGES.Add("background", Content.Load<Texture2D>("title/background"));
+            TITLE_IMAGES.Add("title", Content.Load<Texture2D>("title/title"));
             TITLE_IMAGES.Add("pikminFamily", Content.Load<Texture2D>("title/Pikmin_Family"));
             TITLE_IMAGES.Add("blueLeaf", Content.Load<Texture2D>("title/Leaf_Blue_Pikmin_Front"));
             TITLE_IMAGES.Add("redLeaf", Content.Load<Texture2D>("title/Leaf_Red_Pikmin_Front"));
@@ -159,6 +183,10 @@ namespace Pikmin_4
                 Exit();
 
             // TODO: Add your update logic here
+            oldmState = mState;
+            oldkbState = kbState;
+            mState = Mouse.GetState();
+            kbState = Keyboard.GetState();
 
             base.Update(gameTime);
         }
@@ -169,13 +197,15 @@ namespace Pikmin_4
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.White);
 
             spriteBatch.Begin();
 
-            spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
-
-            //spriteBatch.Draw(TITLE_IMAGES["background"]);
+            if(baseState.Equals("main"))
+            {
+                spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
+                spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
+            }
 
             spriteBatch.End();
 
