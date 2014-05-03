@@ -27,12 +27,17 @@ namespace Pikmin_4
         /// <summary>
         /// Used to maintain the keys pressed.
         /// </summary>
-        KeyboardState kbState,oldkbState;
+        public static KeyboardState kbState,oldkbState;
 
         /// <summary>
         /// Used to maintain the cursors information
         /// </summary>
-        MouseState mState,oldmState;
+        public static MouseState mState,oldmState;
+
+        /// <summary>
+        /// Position handler of mouse.
+        /// </summary>
+        private Cursor cursor = new Cursor();
 
         /// <summary>
         /// Dictionary of all images used in the title screen
@@ -107,6 +112,7 @@ namespace Pikmin_4
             // Adds all the images for the title screen to this dictionary.
             TITLE_IMAGES.Add("background", Content.Load<Texture2D>("title/background"));
             TITLE_IMAGES.Add("title", Content.Load<Texture2D>("title/title"));
+            TITLE_IMAGES.Add("cursor", Content.Load<Texture2D>("title/Title_Cursor"));
             TITLE_IMAGES.Add("pikminFamily", Content.Load<Texture2D>("title/Pikmin_Family"));
             TITLE_IMAGES.Add("blueLeaf", Content.Load<Texture2D>("title/Leaf_Blue_Pikmin_Front"));
             TITLE_IMAGES.Add("redLeaf", Content.Load<Texture2D>("title/Leaf_Red_Pikmin_Front"));
@@ -187,6 +193,7 @@ namespace Pikmin_4
             oldkbState = kbState;
             mState = Mouse.GetState();
             kbState = Keyboard.GetState();
+            cursor.update();
 
             base.Update(gameTime);
         }
@@ -205,6 +212,7 @@ namespace Pikmin_4
             {
                 spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
                 spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
+                spriteBatch.Draw(TITLE_IMAGES["cursor"], cursor.getPosition(), Color.White);
             }
 
             spriteBatch.End();
