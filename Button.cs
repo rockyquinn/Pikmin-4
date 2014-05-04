@@ -12,9 +12,9 @@ namespace Pikmin_4
     {
         private int x, y, width, height;
         private Vector2 position;
-        private Texture2D image;
+        private Texture2D background,foreground;
 
-        public Button(int nx, int ny, int w, int h, Texture2D i)
+        public Button(int nx, int ny, int w, int h, Texture2D fore, Texture2D back)
         {
             x = nx;
             y = ny;
@@ -22,7 +22,8 @@ namespace Pikmin_4
             height = h;
 
             position = new Vector2(x, y);
-            image = i;
+            background = back;
+            foreground = fore;
         }
 
 
