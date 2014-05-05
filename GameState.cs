@@ -31,7 +31,7 @@ namespace Pikmin_4
         }
 
         /// <summary>
-        /// Update function called every frame.
+        /// Update function called every frame
         /// </summary>
         public static void update()
         {
