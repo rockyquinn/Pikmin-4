@@ -34,6 +34,10 @@ namespace Pikmin_4
         /// </summary>
         private Vector2 position;
         /// <summary>
+        /// Makes sure the animation occurs in the right order.
+        /// </summary>
+        private int animationCount;
+        /// <summary>
         /// Integer representation of the Level of a Pikmin:
         ///     1:  "leaf"
         ///     2:  "bud"
@@ -81,6 +85,7 @@ namespace Pikmin_4
             level = lvl;
             x = 0;
             y = 0;
+            animationCount = 0;
 
             initPikmin();
         }
@@ -98,6 +103,7 @@ namespace Pikmin_4
             level = lvl;
             x = nx;
             y = ny;
+            animationCount = 0;
 
             initPikmin();
         }
@@ -116,11 +122,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -130,11 +137,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -144,11 +152,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -161,11 +170,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -175,11 +185,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -189,11 +200,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -206,11 +218,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -220,11 +233,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -234,11 +248,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -251,11 +266,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -265,11 +281,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -279,11 +296,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -297,11 +315,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["purpleLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -311,11 +330,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["purpleLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -325,11 +345,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["purpleFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["purpleLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -343,11 +364,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["rockLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["rockLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -357,11 +379,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["rockBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["rockLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -371,11 +394,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["rockFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["rockFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["rockLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -389,11 +413,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingLeafRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingLeafRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingLeafRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingLeafRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["flyingLeafFront"];
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -403,11 +428,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingBudRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingBudRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingBudRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingBudRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["flyingLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -417,11 +443,12 @@ namespace Pikmin_4
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingFlowerRight1"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingFlowerRight2"]);
                     rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingFlowerRight3"]);
+                    rightAnimation.Add(Game1.PIKMIN_IMAGES["flyingFlowerRight2"]);
 
                     frontImage = Game1.PIKMIN_IMAGES["flyingLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 0;
-                    velY = 0;
+                    velX = 2;
+                    velY = 2;
                     width = 0;
                     height = 0;
                     attackPower = 0;
@@ -431,5 +458,38 @@ namespace Pikmin_4
         ///////////////////////////////
         ////  End of initImages()  ////
         ///////////////////////////////
+
+        /// <summary>
+        /// Commands the pikmin to move towards a certain location.
+        /// </summary>
+        /// <param name="loc">(Vector2) location</param>
+        public void moveTowards(Vector2 loc)
+        {
+            if (position.X < loc.X)
+                position.X += velX;
+            else if (position.X > loc.X)
+                position.X -= velX;
+
+            /*
+            if (position.Y < loc.Y)
+                position.Y += velY;
+            else if (position.Y > loc.Y)
+                position.Y -= velY;
+            */
+        }
+
+        /// <summary>
+        /// Draw function called every frame
+        /// </summary>
+        public void draw(SpriteBatch spriteBatch)
+        {
+            if (Game1.TIMER % 5 == 0)
+            {
+                animationCount++;
+                if (animationCount == rightAnimation.Count)
+                    animationCount = 0;
+            }
+            spriteBatch.Draw(rightAnimation[animationCount], position, Color.White);
+        }
     }
 }
