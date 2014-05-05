@@ -86,6 +86,11 @@ namespace Pikmin_4
         /// </summary>
         public static Dictionary<String, Texture2D> BACKGROUND_IMAGES;
 
+        /// <summary>
+        /// Counts every frame.
+        /// </summary>
+        public static int TIMER;
+
         public Game1()
             : base()
         {
@@ -113,6 +118,7 @@ namespace Pikmin_4
             FOREGROUND_IMAGES = new Dictionary<String, Texture2D>();
 
             COLLISIONS = new Dictionary<string, object>();
+            TIMER = 0;
 
             kbState = new KeyboardState();
             mState = new MouseState();
@@ -228,12 +234,18 @@ namespace Pikmin_4
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            TIMER++;
             oldmState = mState;
             oldkbState = kbState;
             mState = Mouse.GetState();
             kbState = Keyboard.GetState();
             cursor.update();
+
+            if (baseState.Equals("game"))
+            {
+                GameState.update();
+            }
+
             CollisionHandler.update();
 
 
@@ -251,7 +263,7 @@ namespace Pikmin_4
 
             spriteBatch.Begin();
             
-            if(baseState.Equals("main"))
+            if(baseState.Equals("main")) //Frame is on the title screen
             {
                 if (cursor.getImage() != FOREGROUND_IMAGES["titleCursor"])
                     cursor.setImage(FOREGROUND_IMAGES["titleCursor"]);
@@ -259,7 +271,7 @@ namespace Pikmin_4
                 spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
 
                 if (playButton.isSelected())
-                    spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.Black);
+                    spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.Blue);
                 else
                     spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.White);
 
@@ -267,11 +279,13 @@ namespace Pikmin_4
                 if (playButton.isClicked())
                     baseState = "game";
             }
-            else if (baseState.Equals("game"))
+            else if (baseState.Equals("game")) //Frame is on the game screen
             {
                 if (cursor.getImage() != FOREGROUND_IMAGES["gameCursor"])
+                    GameState.initiate();
                     cursor.setImage(FOREGROUND_IMAGES["gameCursor"]);
                 spriteBatch.Draw(cursor.getImage(), cursor.getPosition(), Color.White);
+                GameState.draw(spriteBatch);
             }
 
             spriteBatch.End();
