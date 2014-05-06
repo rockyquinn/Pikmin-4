@@ -37,11 +37,6 @@ namespace Pikmin_4
         public static MouseState mState,oldmState;
 
         /// <summary>
-        /// Position handler of mouse.
-        /// </summary>
-        private Cursor cursor;
-
-        /// <summary>
         /// Button that when clicked will change the game state to "game"
         /// </summary>
         private Button playButton;
@@ -207,13 +202,13 @@ namespace Pikmin_4
             //Adds foreground images and images that have collision.
             FOREGROUND_IMAGES.Add("gameCursor", Content.Load<Texture2D>("Cursors/Game_Cursor"));
             FOREGROUND_IMAGES.Add("titleCursor", Content.Load<Texture2D>("Cursors/Title_Cursor"));
-            cursor = new Cursor(FOREGROUND_IMAGES["titleCursor"]);
-            COLLISIONS.Add("cursor", cursor);
+            Cursor.initiate(FOREGROUND_IMAGES["titleCursor"]);
 
 
             //Adds background images and images that dont have collision.
             //BACKGROUND_IMAGES.Add("|_background images names_|", Content.Load<Texture2D>("|_Content Location_|"));
         }
+
 
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
@@ -239,7 +234,7 @@ namespace Pikmin_4
             oldkbState = kbState;
             mState = Mouse.GetState();
             kbState = Keyboard.GetState();
-            cursor.update();
+            Cursor.update();
 
             if (baseState.Equals("game"))
             {
@@ -265,8 +260,8 @@ namespace Pikmin_4
             
             if(baseState.Equals("main")) //Frame is on the title screen
             {
-                if (cursor.getImage() != FOREGROUND_IMAGES["titleCursor"])
-                    cursor.setImage(FOREGROUND_IMAGES["titleCursor"]);
+                if (Cursor.IMAGE != FOREGROUND_IMAGES["titleCursor"])
+                    Cursor.IMAGE = FOREGROUND_IMAGES["titleCursor"];
                 spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
                 spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
 
@@ -275,16 +270,16 @@ namespace Pikmin_4
                 else
                     spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.White);
 
-                spriteBatch.Draw(cursor.getImage(), cursor.getPosition(), Color.White);
+                spriteBatch.Draw(Cursor.IMAGE, Cursor.POSITION, Color.White);
                 if (playButton.isClicked())
                     baseState = "game";
             }
             else if (baseState.Equals("game")) //Frame is on the game screen
             {
-                if (cursor.getImage() != FOREGROUND_IMAGES["gameCursor"])
+                if (Cursor.IMAGE != FOREGROUND_IMAGES["gameCursor"])
                     GameState.initiate();
-                    cursor.setImage(FOREGROUND_IMAGES["gameCursor"]);
-                spriteBatch.Draw(cursor.getImage(), cursor.getPosition(), Color.White);
+                    Cursor.IMAGE = FOREGROUND_IMAGES["gameCursor"];
+                spriteBatch.Draw(Cursor.IMAGE, Cursor.POSITION, Color.White);
                 GameState.draw(spriteBatch);
             }
 
