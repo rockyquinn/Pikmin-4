@@ -11,17 +11,20 @@ namespace Pikmin_4
 {
     class Cursor
     {
-        private int x, y;
+        /// <summary>
+        /// 
+        /// </summary>
+        public static int X, Y;
 
         /// <summary>
         /// 'x' and 'y' coordinates of the cursor.
         /// </summary>
-        private Vector2 position;
+        public static Vector2 POSITION;
 
         /// <summary>
         /// Image of the button
         /// </summary>
-        private Texture2D image;
+        public static Texture2D IMAGE;
 
         /// <summary>
         /// Boolean representation of whether or not the left mouse button
@@ -30,15 +33,20 @@ namespace Pikmin_4
         public static bool leftClicked;
 
         /// <summary>
-        /// Constructor for a Cursor
+        /// True if Cursor has been initiated
+        /// </summary>
+        public static bool initiated = false;
+
+        /// <summary>
+        /// Initiates the cursor
         /// </summary>
         /// <param name="i">(Texture2D) Button image</param>
-        public Cursor(Texture2D i)
+        public static void initiate(Texture2D i)
         {
-            x = Game1.mState.X;
-            y = Game1.mState.Y;
-            position = new Vector2(x, y);
-            image = i;
+            X = Game1.mState.X;
+            Y = Game1.mState.Y;
+            POSITION = new Vector2(X, Y);
+            IMAGE = i;
             leftClicked = false;
         }
 
@@ -46,52 +54,16 @@ namespace Pikmin_4
         /// <summary>
         /// Updates the cursor's location
         /// </summary>
-        public void update()
+        public static void update()
         {
-            x = Game1.mState.X;
-            y = Game1.mState.Y;
-            position = new Vector2(x, y);
+            X = Game1.mState.X;
+            Y = Game1.mState.Y;
+            POSITION = new Vector2(X, Y);
 
             if (Game1.mState.LeftButton == ButtonState.Pressed)
                 leftClicked = true;
             else
                 leftClicked = false;
-        }
-
-
-        /// <summary>
-        /// Returns the 'x' and 'y' coordinate of cursor.
-        /// </summary>
-        /// <returns>(Vector2) Cursor position</returns>
-        public Vector2 getPosition()
-        {
-            return position;
-        }
-
-
-        /// <summary>
-        /// Returns the image of the button.
-        /// </summary>
-        /// <returns>(Texture2D) Button image</returns>
-        public Texture2D getImage()
-        {
-            return image;
-        }
-
-
-        /// <summary>
-        /// Sets the button's image to a new image.
-        /// </summary>
-        /// <param name="i">New image</param>
-        public void setImage(Texture2D i)
-        {
-            image = i;
-        }
-
-
-        public bool isLeftClicked()
-        {
-            return leftClicked;
         }
     }
 }
