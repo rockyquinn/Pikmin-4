@@ -27,11 +27,14 @@ namespace Pikmin_4
         {
             allPikmin = new List<Pikmin>();
             allPikmin.Add(new Pikmin("blue", 3, 0, 0));
+            allPikmin.Add(new Pikmin("red", 3, 0, 100));
+            allPikmin.Add(new Pikmin("yellow", 3, 0, 200));
+            allPikmin.Add(new Pikmin("white", 3, 0, 300));
             isInitiated = true;
         }
 
         /// <summary>
-        /// Update function called every frame
+        /// Update function called every frame.
         /// </summary>
         public static void update()
         {
