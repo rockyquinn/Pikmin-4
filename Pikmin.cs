@@ -128,8 +128,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Blue Bud
@@ -143,8 +143,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Blue Flower
@@ -158,8 +158,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             }
@@ -176,8 +176,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Red Bud
@@ -191,8 +191,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Red Flower
@@ -206,8 +206,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             }
@@ -224,8 +224,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Yellow Bud
@@ -239,8 +239,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Yellow Flower
@@ -254,8 +254,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             }
@@ -270,10 +270,10 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];
 
-                    velX = 2;
-                    velY = 2;
-                    width = 0;
-                    height = 0;
+                    velX = 3;
+                    velY = 3;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //White Bud
@@ -285,10 +285,10 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 2;
-                    velY = 2;
-                    width = 0;
-                    height = 0;
+                    velX = 3;
+                    velY = 3;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //White Flower
@@ -300,10 +300,10 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 2;
-                    velY = 2;
-                    width = 0;
-                    height = 0;
+                    velX = 3;
+                    velY = 3;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             }
@@ -321,8 +321,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Purple Bud
@@ -336,8 +336,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Purple Flower
@@ -351,8 +351,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             */
@@ -370,8 +370,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Rock Bud
@@ -385,8 +385,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Rock Flower
@@ -400,8 +400,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             */
@@ -419,8 +419,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else if (level == 2) //Flying Bud
@@ -434,8 +434,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
                 else //Flying Flower
@@ -449,8 +449,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    width = 0;
-                    height = 0;
+                    width = frontImage.Width;
+                    height = frontImage.Height;
                     attackPower = 0;
                 }
             */
@@ -466,16 +466,27 @@ namespace Pikmin_4
         public void moveTowards(Vector2 loc)
         {
             if (position.X < loc.X)
-                position.X += velX;
+                if ((loc.X - position.X) <= velX)
+                    position.X += (loc.X - position.X);
+                else
+                    position.X += velX;
             else if (position.X > loc.X)
-                position.X -= velX;
+                if ((position.X - loc.X) <= velX)
+                    position.X -= (position.X - loc.X);
+                else
+                    position.X -= velX;
 
-            /*
+
             if (position.Y < loc.Y)
-                position.Y += velY;
+                if ((loc.Y - position.Y) <= velY)
+                    position.Y += (loc.Y - position.Y);
+                else
+                    position.Y += velY;
             else if (position.Y > loc.Y)
-                position.Y -= velY;
-            */
+                if ((position.Y - loc.Y) <= velX)
+                    position.Y -= (position.Y - loc.Y);
+                else
+                    position.Y -= velY;
         }
 
         /// <summary>
