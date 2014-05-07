@@ -513,5 +513,23 @@ namespace Pikmin_4
         {
             return position;
         }
+
+        /// <summary>
+        /// Return the width of the Pikmin
+        /// </summary>
+        /// <returns>(int) width</returns>
+        public int getWidth()
+        {
+            return width;
+        }
+
+        /// <summary>
+        /// Returns the height of the Pikmin
+        /// </summary>
+        /// <returns>(int) height</returns>
+        public int getHeight()
+        {
+            return height;
+        }
     }
 }
