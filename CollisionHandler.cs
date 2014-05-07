@@ -25,39 +25,45 @@ namespace Pikmin_4
         /// </summary>
         public static void checkCollisons()
         {
-            //Game1.COLLISIONS["playButton"]
-            //Game1.COLLISIONS["cursor"]
-            /*
-            if(Game1.COLLISIONS["cursor"].getX() >= Game1.COLLISIONS["playButton"].getX() &&
-                Game1.COLLISIONS["cursor"].getX() <= Game1.COLLISIONS["playButton"].getX() &&
-                Game1.COLLISIONS["cursor"].getY() >= Game1.COLLISIONS["playButton"].getY() &&
-                Game1.COLLISIONS["cursor"].getY() <= Game1.COLLISIONS["playButton"].getY())
+            if(Game1.baseState.Equals("main")) // if the title screen is in session
             {
-
+                Button b = (Button)Game1.COLLISIONS["playButton"];
+                if ( !b.isSelected() &&
+                    Cursor.X >= b.getPosition().X &&
+                    Cursor.X <= (b.getPosition().X+b.getWidth()) &&
+                    Cursor.Y >= b.getPosition().Y &&
+                    Cursor.Y <= (b.getPosition().Y+b.getHeight()))
+                {
+                    b.forceSelect();
+                }
+                else if (b.isSelected() &&
+                    (Cursor.X < b.getPosition().X ||
+                    Cursor.X > (b.getPosition().X + b.getWidth()) ||
+                    Cursor.Y < b.getPosition().Y ||
+                    Cursor.Y > (b.getPosition().Y + b.getHeight())))
+                {
+                    b.unselect();
+                }
+                else if (b.isSelected() &&
+                    Cursor.leftClicked)
+                {
+                    b.click();
+                }
             }
-            */
-            Cursor c = (Cursor)Game1.COLLISIONS["cursor"];
-            Button b = (Button)Game1.COLLISIONS["playButton"];
-            if ( !b.isSelected() &&
-                c.getPosition().X >= b.getPosition().X &&
-                c.getPosition().X <= (b.getPosition().X+b.getWidth()) &&
-                c.getPosition().Y >= b.getPosition().Y &&
-                c.getPosition().Y <= (b.getPosition().Y+b.getHeight()))
+            else if (Game1.baseState.Equals("game")) // if the game is in session
             {
-                b.forceSelect();
-            }
-            else if (b.isSelected() &&
-                (c.getPosition().X < b.getPosition().X ||
-                 c.getPosition().X > (b.getPosition().X + b.getWidth()) ||
-                 c.getPosition().Y < b.getPosition().Y ||
-                 c.getPosition().Y > (b.getPosition().Y + b.getHeight())))
-            {
-                b.unselect();
-            }
-            else if (b.isSelected() &&
-                c.isLeftClicked())
-            {
-                b.click();
+                /*
+                List<Pikmin> pikminList = (List<Pikmin>)Game1.COLLISIONS["pikminList"];
+                for (int i = 0; i < pikminList.Count(); i++)
+                {
+                    if (pikminList.Count() <= 1  ||  i+1 == (pikminList.Count()-1))
+                        break;
+                    for (int i2 = i+1; i2 < pikminList.Count(); i2++)
+                    {
+                        //if( (pikminList[i].getPosition().X) <= 
+                    }
+                }
+                */
             }
         }
     }
