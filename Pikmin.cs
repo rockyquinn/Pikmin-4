@@ -504,5 +504,14 @@ namespace Pikmin_4
             }
             spriteBatch.Draw(rightAnimation[animationCount], position, Color.White);
         }
+
+        /// <summary>
+        /// Returns the position of this pikmin
+        /// </summary>
+        /// <returns>(Vector2) position</returns>
+        public Vector2 getPosition()
+        {
+            return position;
+        }
     }
 }
