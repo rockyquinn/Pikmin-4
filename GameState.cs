@@ -30,6 +30,7 @@ namespace Pikmin_4
             allPikmin.Add(new Pikmin("red", 3, 0, 100));
             allPikmin.Add(new Pikmin("yellow", 3, 0, 200));
             allPikmin.Add(new Pikmin("white", 3, 0, 300));
+            Game1.COLLISIONS.Add("pikminList", allPikmin);
             isInitiated = true;
         }
 
