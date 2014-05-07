@@ -85,6 +85,7 @@ namespace Pikmin_4
             level = lvl;
             x = 0;
             y = 0;
+            position = new Vector2(x, y);
             animationCount = 0;
 
             initPikmin();
@@ -103,6 +104,7 @@ namespace Pikmin_4
             level = lvl;
             x = nx;
             y = ny;
+            position = new Vector2(x, y);
             animationCount = 0;
 
             initPikmin();
