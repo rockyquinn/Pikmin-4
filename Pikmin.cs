@@ -55,11 +55,11 @@ namespace Pikmin_4
         /// <summary>
         /// Pikmin's velocity over the x-axis.
         /// </summary>
-        private int velX;
+        private int startVelX, velX;
         /// <summary>
         /// Pikmin's velocity over the y-axis.
         /// </summary>
-        private int velY;
+        private int startVelY, velY;
         /// <summary>
         /// Pikmin's image width.
         /// </summary>
@@ -72,6 +72,10 @@ namespace Pikmin_4
         /// Pikmin's attack power.
         /// </summary>
         private int attackPower;
+        /// <summary>
+        /// Boolean set to true if pikmin just hit a collision
+        /// </summary>
+        private Boolean collision = false;
 
 
         /// <summary>
@@ -145,6 +149,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -160,6 +166,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -178,6 +186,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -193,6 +203,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -208,6 +220,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -226,6 +240,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -241,6 +257,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -256,6 +274,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -274,6 +294,8 @@ namespace Pikmin_4
 
                     velX = 3;
                     velY = 3;
+                    startVelX = 3;
+                    startVelY = 3;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -289,6 +311,8 @@ namespace Pikmin_4
 
                     velX = 3;
                     velY = 3;
+                    startVelX = 3;
+                    startVelY = 3;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -304,6 +328,8 @@ namespace Pikmin_4
 
                     velX = 3;
                     velY = 3;
+                    startVelX = 3;
+                    startVelY = 3;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -323,6 +349,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -338,6 +366,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -353,6 +383,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -372,6 +404,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -387,6 +421,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -402,6 +438,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -421,6 +459,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -436,6 +476,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -451,6 +493,8 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
+                    startVelX = 2;
+                    startVelY = 2;
                     width = frontImage.Width;
                     height = frontImage.Height;
                     attackPower = 0;
@@ -489,6 +533,14 @@ namespace Pikmin_4
                     position.Y -= (position.Y - loc.Y);
                 else
                     position.Y -= velY;
+
+            if (collision)
+            {
+                position.Y -= 2;
+                collision = false;
+            }
+            x = (int)position.X;
+            y = (int)position.Y;
         }
 
         /// <summary>
@@ -503,6 +555,15 @@ namespace Pikmin_4
                     animationCount = 0;
             }
             spriteBatch.Draw(rightAnimation[animationCount], position, Color.White);
+        }
+
+
+        /// <summary>
+        /// If a collision is detected this is called
+        /// </summary>
+        public void collided()
+        {
+            collision = true;
         }
 
         /// <summary>
