@@ -53,7 +53,7 @@ namespace Pikmin_4
             else if (Game1.baseState.Equals("game")) // if the game is in session
             {
 
-                if (!GameState.isInitiated)
+                if (!GameState.isInitiated)// if game isn't initiated
                     return;
                 List<Pikmin> pikminList = (List<Pikmin>)Game1.COLLISIONS["pikminList"];
                 for (int i = 0; i < pikminList.Count(); i++)
