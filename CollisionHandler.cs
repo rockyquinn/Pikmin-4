@@ -53,7 +53,7 @@ namespace Pikmin_4
             else if (Game1.baseState.Equals("game")) // if the game is in session
             {
 
-                if (!GameState.isInitiated)// if game isn't initiated
+                if (!GameState.isInitiated)
                     return;
                 List<Pikmin> pikminList = (List<Pikmin>)Game1.COLLISIONS["pikminList"];
                 for (int i = 0; i < pikminList.Count(); i++)
@@ -67,7 +67,14 @@ namespace Pikmin_4
                         // Collision from behind.
                         if (pikminList[i].getPosition().X + pikminList[i].getWidth() >= pikminList[i2].getPosition().X &&
                             pikminList[i].getPosition().X <= pikminList[i2].getPosition().X &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y + pikminList[i2].getHeight() - 20 &&
+                            pikminList[i].getPosition().Y >= pikminList[i2].getPosition().Y &&
+                            pikminList[i].getPosition().Y+pikminList[i].getHeight() <=pikminList[i2].getPosition().Y+pikminList[i2].getHeight()
+                            )
+                        {
+                            pikminList[i].collided();
+                        }
+
+                        if(pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y + pikminList[i2].getHeight() - 20 &&
                             pikminList[i].getPosition().Y <= pikminList[i2].getPosition().Y)
                         {
                             pikminList[i].collided();
