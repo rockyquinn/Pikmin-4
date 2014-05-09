@@ -74,11 +74,13 @@ namespace Pikmin_4
                             pikminList[i].collided();
                         }
 
+                        /*
                         if(pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y + pikminList[i2].getHeight() - 20 &&
                             pikminList[i].getPosition().Y <= pikminList[i2].getPosition().Y)
                         {
                             pikminList[i].collided();
                         }
+                        */
                     }
                 }
                 
