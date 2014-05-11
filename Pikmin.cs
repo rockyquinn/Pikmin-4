@@ -549,21 +549,25 @@ namespace Pikmin_4
             if (leftCollision)
             {
                 position.Y -= (int)1.5*velY;
+                //position.Y -= height;
                 leftCollision = false;
             }
-            if (rightCollision)
+            else if (rightCollision)
             {
                 position.Y += (int)1.5*velY;
+                //position.Y += height;
                 rightCollision = false;
             }
             if (bottomCollision)
             {
                 position.X += (int)1.5*velX;
+                //position.X += width;
                 bottomCollision = false;
             }
-            if (topCollision)
+            else if (topCollision)
             {
                 position.X -= (int)1.5*velX;
+                //position.X -= width;
                 topCollision = false;
             }
             x = (int)position.X;
