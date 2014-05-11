@@ -73,9 +73,21 @@ namespace Pikmin_4
         /// </summary>
         private int attackPower;
         /// <summary>
-        /// Boolean set to true if pikmin just hit a collision
+        /// Boolean set to true if pikmin hits a collision from the left
         /// </summary>
-        private Boolean collision = false;
+        private Boolean leftCollision = false;
+        /// <summary>
+        /// Boolean set to true if pikmin hits a collision from the top
+        /// </summary>
+        private Boolean topCollision = false;
+        /// <summary>
+        /// Boolean set to true if pikmin hits a collision from the right
+        /// </summary>
+        private Boolean rightCollision = false;
+        /// <summary>
+        /// Boolean set to true if pikmin hits a collision from the bottom
+        /// </summary>
+        private Boolean bottomCollision = false;
 
 
         /// <summary>
@@ -534,10 +546,25 @@ namespace Pikmin_4
                 else
                     position.Y -= velY;
 
-            if (collision)
+            if (leftCollision)
             {
-                position.Y -= 2;
-                collision = false;
+                position.Y -= (int)1.5*velY;
+                leftCollision = false;
+            }
+            if (rightCollision)
+            {
+                position.Y += (int)1.5*velY;
+                rightCollision = false;
+            }
+            if (bottomCollision)
+            {
+                position.X += (int)1.5*velX;
+                bottomCollision = false;
+            }
+            if (topCollision)
+            {
+                position.X -= (int)1.5*velX;
+                topCollision = false;
             }
             x = (int)position.X;
             y = (int)position.Y;
@@ -559,11 +586,35 @@ namespace Pikmin_4
 
 
         /// <summary>
-        /// If a collision is detected this is called
+        /// If a collision is detected from the left, this is called
         /// </summary>
-        public void collided()
+        public void collisionFromLeft()
         {
-            collision = true;
+            leftCollision = true;
+        }
+
+        /// <summary>
+        /// If a collision is detected from the right, this is called
+        /// </summary>
+        public void collisionFromRight()
+        {
+            rightCollision = true;
+        }
+
+        /// <summary>
+        /// If a collision is detected from the top, this is called
+        /// </summary>
+        public void collisionFromTop()
+        {
+            topCollision = true;
+        }
+
+        /// <summary>
+        /// If a collision is detected from the bottom, this is called
+        /// </summary>
+        public void collisionFromBottom()
+        {
+            bottomCollision = true;
         }
 
         /// <summary>
