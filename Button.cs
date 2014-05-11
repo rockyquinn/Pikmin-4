@@ -12,23 +12,23 @@ namespace Pikmin_4
     {
         private int x, y, width, height;
         /// <summary>
-        /// 'x' and 'y' coordinate for this button.
+        /// 'x' and 'y' coordinate for this button
         /// </summary>
         private Vector2 position;
         /// <summary>
-        /// Image representation of the button.
+        /// Image representation of the button
         /// </summary>
         private Texture2D image;
         /// <summary>
-        /// String representation of the state to be switched to.
+        /// String representation of the state to be switched to
         /// </summary>
         private String stateChange;
         /// <summary>
-        /// Boolean representing whether or not button is selected.
+        /// Boolean representing whether or not button is selected
         /// </summary>
         private bool selected;
         /// <summary>
-        /// Boolean representing whether or not button is clicked.
+        /// Boolean representing whether or not button is clicked
         /// </summary>
         private bool clicked;
 
