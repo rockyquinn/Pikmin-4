@@ -28,12 +28,12 @@ namespace Pikmin_4
         /// <summary>
         /// True if object is moving left
         /// </summary>
-        private bool facingLeft;
+        private bool facingLeft = false;
 
         /// <summary>
         /// True if object is moving right
         /// </summary>
-        private bool facingRight;
+        private bool facingRight = false;
 
         /// <summary>
         /// The x coordinate of the object
@@ -79,8 +79,9 @@ namespace Pikmin_4
         /// <param name="ny">y position</param>
         /// <param name="left">images for the animation to the left</param>
         /// <param name="right">images for the animation to the right</param>
-        public CollisionObject(String type, int nx, int ny, List<Texture2D> left, List<Texture2D> right)
+        public CollisionObject(String typ, int nx, int ny, List<Texture2D> left, List<Texture2D> right)
         {
+            type = typ;
             x = nx;
             y = ny;
             position = new Vector2(nx, ny);
@@ -99,8 +100,9 @@ namespace Pikmin_4
         /// <param name="nx">x position</param>
         /// <param name="ny">y position</param>
         /// <param name="image">the image to display for this object</param>
-        public CollisionObject(String type, int nx, int ny, Texture2D image)
+        public CollisionObject(String typ, int nx, int ny, Texture2D image)
         {
+            type = typ;
             x = nx;
             y = ny;
             position = new Vector2(nx, ny);
@@ -113,9 +115,16 @@ namespace Pikmin_4
             aniCount = 0;
             facingLeft = true;
         }
-
-        public CollisionObject(int nx, int ny)
+        /// <summary>
+        /// A very basic constructor where other variables 
+        /// must be assigned later
+        /// </summary>
+        /// <param name="typ">child class name</param>
+        /// <param name="nx">x position</param>
+        /// <param name="ny">y position</param>
+        public CollisionObject(String typ, int nx, int ny)
         {
+            type = typ;
             x = nx;
             y = ny;
             position = new Vector2(nx, ny);
@@ -157,12 +166,26 @@ namespace Pikmin_4
             position = new Vector2(x, y);
         }
 
-
+        /// <summary>
+        /// Sets height
+        /// </summary>
+        /// <param name="nh">new height</param>
         public void setHeight(int nh) { height = nh; }
+        /// <summary>
+        /// Gets height
+        /// </summary>
+        /// <returns>(int) height</returns>
         public int getHeight() { return height; }
 
-
+        /// <summary>
+        /// Sets width
+        /// </summary>
+        /// <param name="nw">new width</param>
         public void setWidth(int nw) { width = nw; }
+        /// <summary>
+        /// Gets width
+        /// </summary>
+        /// <returns>(int) width</returns>
         public int getWidth() { return width; }
 
 
@@ -184,34 +207,50 @@ namespace Pikmin_4
             position = new Vector2(nx, ny);
         }
 
-
+        /// <summary>
+        /// Gets current animation image
+        /// </summary>
+        /// <returns>(Texture2D) image</returns>
         public Texture2D getCurrentImage()
         {
-            if (leftAnimations.Count() == 1)
-                return leftAnimations[0];
-            return leftAnimations[0];
+            if(facingLeft)
+                return leftAnimations[aniCount];
+            return rightAnimations[aniCount];
         }
 
-
+        /// <summary>
+        /// sets the image at a certain index to a new index
+        /// </summary>
+        /// <param name="index">index to be changed</param>
+        /// <param name="imag">image to change to</param>
         public void setImage(int index, Texture2D imag)
         {
             leftAnimations[index] = imag;
             rightAnimations[index] = imag;
         }
 
-
+        /// <summary>
+        /// Sets the right facing animations list
+        /// </summary>
+        /// <param name="l">list of Texture2D objects</param>
         public void setRightAnimations(List<Texture2D> l)
         {
             rightAnimations = l;
         }
 
-
+        /// <summary>
+        /// Sets the left facing animations list
+        /// </summary>
+        /// <param name="l">list of Texture2D objects</param>
         public void setLeftAnimations(List<Texture2D> l)
         {
             leftAnimations = l;
         }
 
-
+        /// <summary>
+        /// Draws the images
+        /// </summary>
+        /// <param name="spriteBatch">a SpriteBatch object</param>
         public void draw(SpriteBatch spriteBatch)
         {
             if(facingLeft)
