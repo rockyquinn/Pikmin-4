@@ -9,23 +9,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace Pikmin_4
 {
-    class Cursor
+    class Cursor : CollisionObject
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        public static int X, Y;
-
-        /// <summary>
-        /// 'x' and 'y' coordinates of the cursor.
-        /// </summary>
-        public static Vector2 POSITION;
-
-        /// <summary>
-        /// Image of the button
-        /// </summary>
-        public static Texture2D IMAGE;
-
         /// <summary>
         /// Boolean representation of whether or not the left mouse button
         /// was clicked in this frame.
@@ -41,12 +26,8 @@ namespace Pikmin_4
         /// Initiates the cursor
         /// </summary>
         /// <param name="i">(Texture2D) Button image</param>
-        public static void initiate(Texture2D i)
+        public Cursor(Texture2D i) : base("Cursor", Game1.mState.X, Game1.mState.Y, i)
         {
-            X = Game1.mState.X;
-            Y = Game1.mState.Y;
-            POSITION = new Vector2(X, Y);
-            IMAGE = i;
             leftClicked = false;
         }
 
@@ -54,11 +35,9 @@ namespace Pikmin_4
         /// <summary>
         /// Updates the cursor's location
         /// </summary>
-        public static void update()
+        public void update()
         {
-            X = Game1.mState.X;
-            Y = Game1.mState.Y;
-            POSITION = new Vector2(X, Y);
+            setPosition(Game1.mState.X, Game1.mState.Y);
 
             if (Game1.mState.LeftButton == ButtonState.Pressed)
                 leftClicked = true;
