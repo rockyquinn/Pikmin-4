@@ -114,6 +114,15 @@ namespace Pikmin_4
             facingLeft = true;
         }
 
+        public CollisionObject(int nx, int ny)
+        {
+            x = nx;
+            y = ny;
+            position = new Vector2(nx, ny);
+            aniCount = 0;
+            facingLeft = true;
+        }
+
 
         /// <summary>
         /// Gets the x position of the object
@@ -146,7 +155,15 @@ namespace Pikmin_4
         {
             y = ny;
             position = new Vector2(x, y);
-        } 
+        }
+
+
+        public void setHeight(int nh) { height = nh; }
+        public int getHeight() { return height; }
+
+
+        public void setWidth(int nw) { width = nw; }
+        public int getWidth() { return width; }
 
 
         /// <summary>
@@ -183,15 +200,30 @@ namespace Pikmin_4
         }
 
 
+        public void setRightAnimations(List<Texture2D> l)
+        {
+            rightAnimations = l;
+        }
+
+
+        public void setLeftAnimations(List<Texture2D> l)
+        {
+            leftAnimations = l;
+        }
+
+
         public void draw(SpriteBatch spriteBatch)
         {
             if(facingLeft)
                 spriteBatch.Draw(leftAnimations[aniCount], position, Color.White);
             else if(facingRight)
                 spriteBatch.Draw(rightAnimations[aniCount], position, Color.White);
-            aniCount++;
-            if (aniCount % leftAnimations.Count() == 0)
-                aniCount = 0;
+            if (Game1.TIMER % 5 == 0)
+            {
+                aniCount++;
+                if (aniCount % leftAnimations.Count() == 0)
+                    aniCount = 0;
+            }
         }
     }
 }
