@@ -8,27 +8,18 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Pikmin_4
 {
-    class Button
+    class Button : CollisionObject
     {
-        private int x, y, width, height;
         /// <summary>
-        /// 'x' and 'y' coordinate for this button
-        /// </summary>
-        private Vector2 position;
-        /// <summary>
-        /// Image representation of the button
-        /// </summary>
-        private Texture2D image;
-        /// <summary>
-        /// String representation of the state to be switched to
+        /// Determines what state will be changeed to when clicked
         /// </summary>
         private String stateChange;
         /// <summary>
-        /// Boolean representing whether or not button is selected
+        /// Boolean representing whether or not button is selected.
         /// </summary>
         private bool selected;
         /// <summary>
-        /// Boolean representing whether or not button is clicked
+        /// Boolean representing whether or not button is clicked.
         /// </summary>
         private bool clicked;
 
@@ -41,54 +32,11 @@ namespace Pikmin_4
         /// <param name="h">(int) Height</param>
         /// <param name="state">(String) State to change to if button is clicked</param>
         /// <param name="im">(Texture2D) Image</param>
-        public Button(int nx, int ny, int w, int h, String state, Texture2D im)
+        public Button(int nx, int ny, int w, int h, String state, Texture2D im) : base("Button",nx,ny,im)
         {
-            x = nx;
-            y = ny;
-            width = w;
-            height = h;
             selected = false;
             clicked = false;
             stateChange = state;
-
-            position = new Vector2(x, y);
-            image = im;
-        }
-
-        /// <summary>
-        /// Returns the position of the Button.
-        /// </summary>
-        /// <returns>(Vector2) position</returns>
-        public Vector2 getPosition()
-        {
-            return position;
-        }
-
-        /// <summary>
-        /// Returns the image of the button.
-        /// </summary>
-        /// <returns>(Texture2D) image</returns>
-        public Texture2D getImage()
-        {
-            return image;
-        }
-
-        /// <summary>
-        /// Returns the width of the button.
-        /// </summary>
-        /// <returns>(int) width</returns>
-        public int getWidth()
-        {
-            return width;
-        }
-
-        /// <summary>
-        /// Returns the height of the Button
-        /// </summary>
-        /// <returns>(int) height</returns>
-        public int getHeight()
-        {
-            return height;
         }
 
         /// <summary>
@@ -126,7 +74,10 @@ namespace Pikmin_4
             return stateChange;
         }
 
-
+        /// <summary>
+        /// Return a boolean based on whether or not this button has been clicked.
+        /// </summary>
+        /// <returns>(bool) clicked</returns>
         public bool isClicked()
         {
             return clicked;
