@@ -37,6 +37,11 @@ namespace Pikmin_4
         public static MouseState mState,oldmState;
 
         /// <summary>
+        /// Cursor to keep track of the mouse.
+        /// </summary>
+        private static Cursor cursor;
+
+        /// <summary>
         /// Button that when clicked will change the game state to "game"
         /// </summary>
         private Button playButton;
@@ -202,7 +207,8 @@ namespace Pikmin_4
             //Adds foreground images and images that have collision.
             FOREGROUND_IMAGES.Add("gameCursor", Content.Load<Texture2D>("Cursors/Game_Cursor"));
             FOREGROUND_IMAGES.Add("titleCursor", Content.Load<Texture2D>("Cursors/Title_Cursor"));
-            Cursor.initiate(FOREGROUND_IMAGES["titleCursor"]);
+            cursor = new Cursor(FOREGROUND_IMAGES["titleCursor"]);
+            COLLISIONS.Add("cursor", cursor);
 
 
             //Adds background images and images that dont have collision.
@@ -234,7 +240,7 @@ namespace Pikmin_4
             oldkbState = kbState;
             mState = Mouse.GetState();
             kbState = Keyboard.GetState();
-            Cursor.update();
+            cursor.update();
 
             if (baseState.Equals("game"))
             {
@@ -260,26 +266,28 @@ namespace Pikmin_4
             
             if(baseState.Equals("main")) //Frame is on the title screen
             {
-                if (Cursor.IMAGE != FOREGROUND_IMAGES["titleCursor"])
-                    Cursor.IMAGE = FOREGROUND_IMAGES["titleCursor"];
+                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["titleCursor"])
+                    cursor.setImage(0, FOREGROUND_IMAGES["titleCursor"]);
                 spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
                 spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
 
                 if (playButton.isSelected())
-                    spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.Blue);
+                    spriteBatch.Draw(playButton.getCurrentImage(), playButton.getPosition(), Color.LimeGreen);
                 else
-                    spriteBatch.Draw(playButton.getImage(), playButton.getPosition(), Color.White);
+                    spriteBatch.Draw(playButton.getCurrentImage(), playButton.getPosition(), Color.White);
 
-                spriteBatch.Draw(Cursor.IMAGE, Cursor.POSITION, Color.White);
+                cursor.draw(spriteBatch);
                 if (playButton.isClicked())
                     baseState = "game";
             }
             else if (baseState.Equals("game")) //Frame is on the game screen
             {
-                if (Cursor.IMAGE != FOREGROUND_IMAGES["gameCursor"])
-                    GameState.initiate();
-                    Cursor.IMAGE = FOREGROUND_IMAGES["gameCursor"];
-                spriteBatch.Draw(Cursor.IMAGE, Cursor.POSITION, Color.White);
+                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["gameCursor"])
+                {
+                    GameState.initiate(cursor);
+                    cursor.setImage(0, FOREGROUND_IMAGES["gameCursor"]);
+                }
+                cursor.draw(spriteBatch);
                 GameState.draw(spriteBatch);
             }
 
