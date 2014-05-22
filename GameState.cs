@@ -20,29 +20,21 @@ namespace Pikmin_4
 
         public static bool isInitiated = false;
 
+        private static Cursor cursor;
+
         /// <summary>
         /// Initiates the static GameState class.
         /// </summary>
-        public static void initiate()
+        public static void initiate(Cursor c)
         {
             allPikmin = new List<Pikmin>();
             allPikmin.Add(new Pikmin("blue", 3, 0, 0));
-            allPikmin.Add(new Pikmin("red", 3, 0, 100));
-            allPikmin.Add(new Pikmin("yellow", 3, 0, 200));
-            allPikmin.Add(new Pikmin("white", 3, 0, 300));
-            allPikmin.Add(new Pikmin("blue", 2, 100, 0));
-            allPikmin.Add(new Pikmin("red", 2, 100, 100));
-            allPikmin.Add(new Pikmin("yellow", 100, 0, 200));
-            allPikmin.Add(new Pikmin("white", 2, 100, 300));
-            allPikmin.Add(new Pikmin("blue", 3, 0, 10));
-            allPikmin.Add(new Pikmin("red", 3, 0, 110));
-            allPikmin.Add(new Pikmin("yellow", 3, 0, 210));
-            allPikmin.Add(new Pikmin("white", 3, 0, 310));
-            allPikmin.Add(new Pikmin("blue", 2, 100, 10));
-            allPikmin.Add(new Pikmin("red", 2, 100, 110));
-            allPikmin.Add(new Pikmin("yellow", 100, 0, 210));
-            allPikmin.Add(new Pikmin("white", 2, 100, 310));
+            allPikmin.Add(new Pikmin("white", 3, 0, 100));
+            allPikmin.Add(new Pikmin("white", 1, 0, 100));
             Game1.COLLISIONS.Add("pikminList", allPikmin);
+
+            cursor = c;
+
             isInitiated = true;
         }
 
