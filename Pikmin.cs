@@ -28,13 +28,6 @@ namespace Pikmin_4
         /// <summary>
         /// 'x' and 'y' coordinate of a pikmin.
         /// </summary>
-        private int animationCount;
-        /// <summary>
-        /// Integer representation of the Level of a Pikmin:
-        ///     1:  "leaf"
-        ///     2:  "bud"
-        ///     3:  "flower"
-        /// </summary>
         private int level;
         /// <summary>
         /// 'x' position of the Pikmin.
@@ -49,21 +42,21 @@ namespace Pikmin_4
         /// </summary>
         private int attackPower;
         /// <summary>
-        /// Boolean set to true if pikmin hits a collision from the left
+        /// Collision from the left
         /// </summary>
-        private Boolean leftCollision = false;
+        private bool westCollision;
         /// <summary>
-        /// Boolean set to true if pikmin hits a collision from the top
+        /// Collision from the right
         /// </summary>
-        private Boolean topCollision = false;
+        private bool eastCollision;
         /// <summary>
-        /// Boolean set to true if pikmin hits a collision from the right
+        /// Collision from the above
         /// </summary>
-        private Boolean rightCollision = false;
+        private bool northCollision;
         /// <summary>
-        /// Boolean set to true if pikmin hits a collision from the bottom
+        /// Collision from the bottom
         /// </summary>
-        private Boolean bottomCollision = false;
+        private bool southCollision;
 
 
         /// <summary>
@@ -71,11 +64,15 @@ namespace Pikmin_4
         /// </summary>
         /// <param name="typ">(string) Color/Type of the Pikmin</param>
         /// <param name="lvl">(int) Level of Pikmin</param>
-        public Pikmin(String typ, int lvl) : base(0,0)
+        public Pikmin(String typ, int lvl) : base("Pikmin",0,0)
         {
             type = typ;
             level = lvl;
-            animationCount = 0;
+
+            westCollision = false;
+            eastCollision = false;
+            northCollision = false;
+            southCollision = false;
 
             initPikmin();
         }
@@ -87,11 +84,10 @@ namespace Pikmin_4
         /// <param name="lvl">(int) Level of the Pikmin</param>
         /// <param name="nx">(int) 'x' position of the Pikmin</param>
         /// <param name="ny">(int) 'y' position of the Pikmin</param>
-        public Pikmin(String typ, int lvl, int nx, int ny) : base(nx,ny)
+        public Pikmin(String typ, int lvl, int nx, int ny) : base("Pikmin",nx,ny)
         {
             type = typ;
             level = lvl;
-            animationCount = 0;
 
             initPikmin();
         }
@@ -484,6 +480,7 @@ namespace Pikmin_4
             */
             setRightAnimations(rightAnimation);
             setLeftAnimations(rightAnimation);//TEMPORARY\\
+            
         }
         ///////////////////////////////
         ////  End of initImages()  ////
@@ -518,43 +515,101 @@ namespace Pikmin_4
                 else
                     setY((int)(getY() - velY));
 
-            if (leftCollision)
+            if (westCollision)
             {
                 setY((int)(getY()-1.5*velY));
                 //position.Y -= height;
-                leftCollision = false;
+                westCollision = false;
             }
-            else if (rightCollision)
+            else if (eastCollision)
             {
                 setY((int)(getY()+1.5*velY));
                 //position.Y += height;
-                rightCollision = false;
+                eastCollision = false;
             }
-            if (bottomCollision)
+            else if (southCollision)
             {
                 setX((int)(getX()+1.5*velX));
                 //position.X += width;
-                bottomCollision = false;
+                southCollision = false;
             }
-            else if (topCollision)
+            else if (northCollision)
             {
                 setX((int)(getX()-1.5*velX));
                 //position.X -= width;
-                topCollision = false;
+                northCollision = false;
             }
         }
 
-        /*
-        public void draw(SpriteBatch spriteBatch)
+
+        /// <summary>
+        /// Moves a specific NESW direction
+        /// </summary>
+        /// <param name="direction">(string) none,north,east,south,west, or in between</param>
+        public void move(string direction)
         {
-            if (Game1.TIMER % 5 == 0)
+            if (direction.Equals("none"))
+                return;
+            else if (direction.Equals("north"))
             {
-                animationCount++;
-                if (animationCount == rightAnimation.Count)
-                    animationCount = 0;
+                setY((int)(getY() - velY));
             }
-            spriteBatch.Draw(rightAnimation[animationCount], position, Color.White);
-        }*/
+            else if (direction.Equals("northeast"))
+            {
+                setY((int)(getY() - velY));
+                setX((int)(getX() + velX));
+            }
+            else if (direction.Equals("east"))
+            {
+                setX((int)(getX() + velX));
+            }
+            else if (direction.Equals("southeast"))
+            {
+                setY((int)(getY() + velY));
+                setX((int)(getX() + velX));
+            }
+            else if (direction.Equals("south"))
+            {
+                setY((int)(getY() + velY));
+            }
+            else if (direction.Equals("southwest"))
+            {
+                setY((int)(getY() + velY));
+                setX((int)(getX() - velX));
+            }
+            else if (direction.Equals("west"))
+            {
+                setX((int)(getX() - velX));
+            }
+            else if (direction.Equals("northwest"))
+            {
+                setY((int)(getY() - velY));
+                setX((int)(getX() - velX));
+            }
+
+
+
+            if (northCollision)
+            {
+                northCollision = false;
+                move("south");
+            } 
+            if (eastCollision)
+            {
+                eastCollision = false;
+                move("west");
+            }
+            if (southCollision)
+            {
+                southCollision = false;
+                move("north");
+            }
+            if (westCollision)
+            {
+                westCollision = false;
+                move("east");
+            }
+        }
 
 
         /// <summary>
@@ -562,7 +617,7 @@ namespace Pikmin_4
         /// </summary>
         public void collisionFromLeft()
         {
-            leftCollision = true;
+            westCollision = true;
         }
 
         /// <summary>
@@ -570,7 +625,7 @@ namespace Pikmin_4
         /// </summary>
         public void collisionFromRight()
         {
-            rightCollision = true;
+            eastCollision = true;
         }
 
         /// <summary>
@@ -578,7 +633,7 @@ namespace Pikmin_4
         /// </summary>
         public void collisionFromTop()
         {
-            topCollision = true;
+            northCollision = true;
         }
 
         /// <summary>
@@ -586,7 +641,7 @@ namespace Pikmin_4
         /// </summary>
         public void collisionFromBottom()
         {
-            bottomCollision = true;
+            southCollision = true;
         }
     }
 }
