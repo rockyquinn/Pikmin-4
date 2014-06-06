@@ -66,35 +66,35 @@ namespace Pikmin_4
                         if (i == i2)
                             continue;
                         // Collision from the left (Correct)
-                        if (pikminList[i].getPosition().X  + (pikminList[i].getWidth() / 2) <= pikminList[i2].getPosition().X + pikminList[i2].getWidth() &&
-                            pikminList[i].getPosition().X <= pikminList[i2].getPosition().X + pikminList[i2].getWidth() &&
-                            pikminList[i].getPosition().Y <= pikminList[i2].getPosition().Y + pikminList[i2].getHeight() &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y)
+                        if (pikminList[i].getX()  + (pikminList[i].getWidth() / 2) <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
+                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
+                            pikminList[i].getY() <= pikminList[i2].getY() + pikminList[i2].getHeight() &&
+                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY())
                         {
                             pikminList[i].collisionFromLeft();
                         }
                         // Collision from the right (Correct)
-                        else if (pikminList[i].getPosition().X + (pikminList[i].getWidth() / 2) >= pikminList[i2].getPosition().X &&
-                            pikminList[i].getPosition().X + pikminList[i].getWidth() >= pikminList[i2].getPosition().X &&
-                            pikminList[i].getPosition().Y <= pikminList[i2].getPosition().Y + pikminList[i2].getHeight() &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y)
+                        else if (pikminList[i].getX() + (pikminList[i].getWidth() / 2) >= pikminList[i2].getX() &&
+                            pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() &&
+                            pikminList[i].getY() <= pikminList[i2].getY() + pikminList[i2].getHeight() &&
+                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY())
                         {
                             pikminList[i].collisionFromRight();
                         }
 
                         // Collision from top
-                        if (pikminList[i].getPosition().X + pikminList[i].getWidth() >= pikminList[i2].getPosition().X &&
-                            pikminList[i].getPosition().X <= pikminList[i2].getPosition().X + pikminList[i2].getWidth() &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() >= pikminList[i2].getPosition().Y + (pikminList[i2].getHeight() / 2) &&
-                            pikminList[i].getPosition().Y <= pikminList[i2].getPosition().Y)
+                        if (pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() &&
+                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
+                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY() + (pikminList[i2].getHeight() / 2) &&
+                            pikminList[i].getY() <= pikminList[i2].getY())
                         {
                             pikminList[i].collisionFromTop();
                         }
                         // Collision from bottom
-                        else if (pikminList[i].getPosition().X + pikminList[i].getWidth() >= pikminList[i2].getPosition().X &&
-                            pikminList[i].getPosition().X <= pikminList[i2].getPosition().X + pikminList[i2].getWidth() &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() >= (pikminList[i2].getPosition().Y + pikminList[i2].getHeight() / 2) + (pikminList[i2].getHeight() / 2) &&
-                            pikminList[i].getPosition().Y + pikminList[i].getHeight() <= pikminList[i2].getPosition().Y + pikminList[i2].getHeight())
+                        else if (pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() &&
+                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
+                            pikminList[i].getY() + pikminList[i].getHeight() >= (pikminList[i2].getY() + pikminList[i2].getHeight() / 2) + (pikminList[i2].getHeight() / 2) &&
+                            pikminList[i].getY() + pikminList[i].getHeight() <= pikminList[i2].getY() + pikminList[i2].getHeight())
                         {
                             pikminList[i].collisionFromBottom();
                         }
