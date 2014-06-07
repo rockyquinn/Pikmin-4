@@ -18,17 +18,16 @@ namespace Pikmin_4
         /// </summary>
         public static void checkCollisons()
         {
-            CollisionObject cursor = (CollisionObject)Game1.COLLISIONS["cursor"];
             if(Game1.baseState.Equals("main")) // if the title screen is in session
             {
                 Button b = (Button)Game1.COLLISIONS["playButton"];
                 if ( !b.isSelected() &&
-                    b.compareTo(cursor).Equals("collision"))
+                    b.compareTo((CollisionObject)Game1.COLLISIONS["cursor"]).Equals("collision"))
                 {
                     b.forceSelect();
                 }
                 else if (b.isSelected() &&
-                    b.compareTo(cursor).Equals("none"))
+                    b.compareTo((CollisionObject)Game1.COLLISIONS["cursor"]).Equals("none"))
                 {
                     b.unselect();
                 }
