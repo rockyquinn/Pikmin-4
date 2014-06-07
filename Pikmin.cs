@@ -594,17 +594,17 @@ namespace Pikmin_4
                 northCollision = false;
                 move("south");
             } 
-            if (eastCollision)
+            else if (eastCollision)
             {
                 eastCollision = false;
                 move("west");
             }
-            if (southCollision)
+            else if (southCollision)
             {
                 southCollision = false;
                 move("north");
             }
-            if (westCollision)
+            else if (westCollision)
             {
                 westCollision = false;
                 move("east");
@@ -643,5 +643,6 @@ namespace Pikmin_4
         {
             southCollision = true;
         }
+
     }
 }
