@@ -8,13 +8,6 @@ namespace Pikmin_4
 {
     class CollisionHandler
     {
-        /// <summary>
-        /// Empty constructor for a CollisionHandler
-        /// </summary>
-        public CollisionHandler()
-        {
-        }
-
         public static void update()
         {
             checkCollisons();
