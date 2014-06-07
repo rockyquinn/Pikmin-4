@@ -264,5 +264,22 @@ namespace Pikmin_4
                     aniCount = 0;
             }
         }
+
+        
+        /// <summary>
+        /// Compares the positions of an object compared to this one
+        /// </summary>
+        /// <param name="o">object used for comparison</param>
+        public string compareTo(CollisionObject o)
+        {
+            if(this.x+this.width >= o.x &&
+                this.x <= o.x+o.width &&
+                this.y+this.height >= o.y &&
+                this.y <= o.y+height)
+            {
+                return "collision";
+            }
+            return "none";
+        }
     }
 }
