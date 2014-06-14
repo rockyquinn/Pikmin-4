@@ -45,6 +45,11 @@ namespace Pikmin_4
         /// Button that when clicked will change the game state to "game"
         /// </summary>
         private Button playButton;
+            
+        /// <summary>
+        /// Button that when clicked will change the game state to "options"
+        /// </summary>
+        private Button optionButton;
 
         /// <summary>
         /// Dictionary of all objects that can have collisions
@@ -77,14 +82,14 @@ namespace Pikmin_4
         public static Dictionary<String, Texture2D> ENEMY_IMAGES;
 
         /// <summary>
-        /// Dictionary of all images used for walls with collisions
+        /// Dictionary of all images used for walls and grass and stuff
         /// </summary>
-        public static Dictionary<String, Texture2D> FOREGROUND_IMAGES;
+        public static Dictionary<String, Texture2D> BLOCK_IMAGES;
 
         /// <summary>
-        /// Dictionary of all images used for the background
+        /// Dictionary of all images used for walls and grass and stuff
         /// </summary>
-        public static Dictionary<String, Texture2D> BACKGROUND_IMAGES;
+        public static Dictionary<String, Texture2D> FOREGROUND_IMAGES;
 
         /// <summary>
         /// Counts every frame.
@@ -114,7 +119,7 @@ namespace Pikmin_4
             PIKMIN_IMAGES = new Dictionary<String, Texture2D>();
             PLAYER_IMAGES = new Dictionary<String, Texture2D>();
             ENEMY_IMAGES = new Dictionary<String, Texture2D>();
-            BACKGROUND_IMAGES = new Dictionary<String, Texture2D>();
+            BLOCK_IMAGES = new Dictionary<String, Texture2D>();
             FOREGROUND_IMAGES = new Dictionary<String, Texture2D>();
 
             COLLISIONS = new Dictionary<string, object>();
@@ -141,14 +146,20 @@ namespace Pikmin_4
 
             // Adds all the images for buttons
             BUTTON_IMAGES.Add("play", Content.Load<Texture2D>("Buttons/Play_Button"));
+            BUTTON_IMAGES.Add("options", Content.Load<Texture2D>("Buttons/Option_Button"));
             playButton = new Button(350, 300, BUTTON_IMAGES["play"].Width, BUTTON_IMAGES["play"].Height,
                                     "game", BUTTON_IMAGES["play"]);
+            optionButton = new Button(350, 330, BUTTON_IMAGES["options"].Width, BUTTON_IMAGES["options"].Height,
+                                    "options", BUTTON_IMAGES["options"]);
             COLLISIONS.Add("playButton", playButton);
+            COLLISIONS.Add("optionsButton", optionButton);
 
             // Adds all the images for playable characters to this dictionary.
             PLAYER_IMAGES.Add("olimarRight1", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk1"));
             PLAYER_IMAGES.Add("olimarRight2", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk2"));
             PLAYER_IMAGES.Add("olimarRight3", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk3"));
+            PLAYER_IMAGES.Add("olimarRight4", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk4"));
+            PLAYER_IMAGES.Add("olimarRight5", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk5"));
 
             // Adds all the images for pikmin to this dictionary.
             PIKMIN_IMAGES.Add("blueLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Blue_Pikmin_Front"));
@@ -212,7 +223,9 @@ namespace Pikmin_4
 
 
             //Adds background images and images that dont have collision.
-            //BACKGROUND_IMAGES.Add("|_background images names_|", Content.Load<Texture2D>("|_Content Location_|"));
+            //BLOCK_IMAGES.Add("|_background images names_|", Content.Load<Texture2D>("|_Content Location_|"));
+            BLOCK_IMAGES.Add("grass", Content.Load<Texture2D>("Map Blocks/grass_block"));
+            BLOCK_IMAGES.Add("rock", Content.Load<Texture2D>("Map Blocks/rock_block"));
         }
 
 
@@ -276,6 +289,11 @@ namespace Pikmin_4
                 else
                     spriteBatch.Draw(playButton.getCurrentImage(), playButton.getPosition(), Color.White);
 
+                if (optionButton.isSelected())
+                    spriteBatch.Draw(optionButton.getCurrentImage(), optionButton.getPosition(), Color.LimeGreen);
+                else
+                    spriteBatch.Draw(optionButton.getCurrentImage(), optionButton.getPosition(), Color.White);
+
                 cursor.draw(spriteBatch);
                 if (playButton.isClicked())
                     baseState = "game";
@@ -289,6 +307,13 @@ namespace Pikmin_4
                 }
                 cursor.draw(spriteBatch);
                 GameState.draw(spriteBatch);
+            }
+            else if (baseState.Equals("options"))
+            {
+                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["titleCursor"])
+                    cursor.setImage(0, FOREGROUND_IMAGES["titleCursor"]);
+                cursor.draw(spriteBatch);
+                OptionState.draw(spriteBatch);
             }
 
             spriteBatch.End();
