@@ -38,12 +38,12 @@ namespace Pikmin_4
         /// <summary>
         /// The x coordinate of the object
         /// </summary>
-        private int x;
+        private float x;
 
         /// <summary>
         /// The y coordinate of the object
         /// </summary>
-        private int y;
+        private float y;
 
         /// <summary>
         /// the object's width
@@ -61,6 +61,11 @@ namespace Pikmin_4
         private int aniCount;
 
         /// <summary>
+        /// If true, animation will continue
+        /// </summary>
+        private bool animate;
+
+        /// <summary>
         /// All images involved in moving right
         /// </summary>
         private List<Texture2D> rightAnimations;
@@ -69,6 +74,17 @@ namespace Pikmin_4
         /// All images involved in moving left.
         /// </summary>
         private List<Texture2D> leftAnimations;
+
+        /// <summary>
+        /// Image displayed when animate is false.
+        /// </summary>
+        private Texture2D stand;
+
+        /// <summary>
+        /// How fast an image will be animated
+        /// Fast => Slow
+        /// </summary>
+        private int buffer = 5;
 
 
         /// <summary>
@@ -79,7 +95,7 @@ namespace Pikmin_4
         /// <param name="ny">y position</param>
         /// <param name="left">images for the animation to the left</param>
         /// <param name="right">images for the animation to the right</param>
-        public CollisionObject(String typ, int nx, int ny, List<Texture2D> left, List<Texture2D> right)
+        public CollisionObject(String typ, float nx, float ny, List<Texture2D> left, List<Texture2D> right, Texture2D still)
         {
             type = typ;
             x = nx;
@@ -91,6 +107,7 @@ namespace Pikmin_4
             rightAnimations = right;
             aniCount = 0;
             facingLeft = true;
+            stand = still;
         }
 
         /// <summary>
@@ -100,7 +117,7 @@ namespace Pikmin_4
         /// <param name="nx">x position</param>
         /// <param name="ny">y position</param>
         /// <param name="image">the image to display for this object</param>
-        public CollisionObject(String typ, int nx, int ny, Texture2D image)
+        public CollisionObject(String typ, float nx, float ny, Texture2D image)
         {
             type = typ;
             x = nx;
@@ -112,6 +129,7 @@ namespace Pikmin_4
             leftAnimations.Add(image);
             rightAnimations = new List<Texture2D>();
             rightAnimations.Add(image);
+            stand = image;
             aniCount = 0;
             facingLeft = true;
         }
@@ -122,7 +140,7 @@ namespace Pikmin_4
         /// <param name="typ">child class name</param>
         /// <param name="nx">x position</param>
         /// <param name="ny">y position</param>
-        public CollisionObject(String typ, int nx, int ny)
+        public CollisionObject(String typ, float nx, float ny)
         {
             type = typ;
             x = nx;
@@ -137,7 +155,7 @@ namespace Pikmin_4
         /// Gets the x position of the object
         /// </summary>
         /// <returns>(int) x position</returns>
-        public int getX() { return x; }
+        public float getX() { return x; }
 
         /// <summary>
         /// Sets the x position of the object
@@ -154,7 +172,7 @@ namespace Pikmin_4
         /// Gets the y position of the object
         /// </summary>
         /// <returns>(int) y position</returns>
-        public int getY() { return y; }
+        public float getY() { return y; }
 
         /// <summary>
         /// Sets the y position
@@ -164,6 +182,15 @@ namespace Pikmin_4
         {
             y = ny;
             position = new Vector2(x, y);
+        }
+
+        /// <summary>
+        /// Sets the standing image
+        /// </summary>
+        /// <param name="still">new image</param>
+        public void setStand(Texture2D still)
+        {
+            stand = still;
         }
 
         /// <summary>
@@ -200,7 +227,7 @@ namespace Pikmin_4
         /// </summary>
         /// <param name="nx">new x</param>
         /// <param name="ny">new y</param>
-        public void setPosition(int nx, int ny)
+        public void setPosition(float nx, float ny)
         {
             x = nx;
             y = ny;
@@ -248,23 +275,45 @@ namespace Pikmin_4
         }
 
         /// <summary>
+        /// Checks collidability with other objects.
+        /// </summary>
+        /// <returns>if object is collidable with othe objects</returns>
+        public bool getCollidable()
+        {
+            return isCollidable;
+        }
+
+        /// <summary>
+        /// Sets buffer
+        /// </summary>
+        /// <param name="nb">new buffer</param>
+        public void setBuffer(int nb)
+        {
+            buffer = nb;
+        }
+
+        /// <summary>
         /// Draws the images
         /// </summary>
         /// <param name="spriteBatch">a SpriteBatch object</param>
         public void draw(SpriteBatch spriteBatch)
         {
-            if(facingLeft)
+            if(!animate)
+                spriteBatch.Draw(stand, position, Color.White);
+            else if(facingLeft)
                 spriteBatch.Draw(leftAnimations[aniCount], position, Color.White);
             else if(facingRight)
                 spriteBatch.Draw(rightAnimations[aniCount], position, Color.White);
-            if (Game1.TIMER % 5 == 0)
+            if (Game1.TIMER % buffer == 0)
             {
+                if (!animate)
+                    return;
                 aniCount++;
                 if (aniCount % leftAnimations.Count() == 0)
                     aniCount = 0;
             }
         }
-
+        
         
         /// <summary>
         /// Compares the positions of an object compared to this one
@@ -275,11 +324,29 @@ namespace Pikmin_4
             if(this.x+this.width >= o.x &&
                 this.x <= o.x+o.width &&
                 this.y+this.height >= o.y &&
-                this.y <= o.y+height)
+                this.y <= o.y+o.height)
             {
                 return "collision";
             }
             return "none";
+        }
+
+
+        /// <summary>
+        /// To stop animation
+        /// </summary>
+        public void unanimate()
+        {
+            animate = false;
+        }
+
+
+        /// <summary>
+        /// To start animation
+        /// </summary>
+        public void reanimate()
+        {
+            animate = true;
         }
     }
 }
