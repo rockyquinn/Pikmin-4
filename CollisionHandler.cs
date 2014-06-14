@@ -21,6 +21,7 @@ namespace Pikmin_4
             if(Game1.baseState.Equals("main")) // if the title screen is in session
             {
                 Button b = (Button)Game1.COLLISIONS["playButton"];
+                Button b2 = (Button)Game1.COLLISIONS["optionsButton"];
                 if ( !b.isSelected() &&
                     b.compareTo((CollisionObject)Game1.COLLISIONS["cursor"]).Equals("collision"))
                 {
@@ -36,6 +37,23 @@ namespace Pikmin_4
                 {
                     b.click();
                 }
+
+
+                if (!b2.isSelected() &&
+                    b2.compareTo((CollisionObject)Game1.COLLISIONS["cursor"]).Equals("collision"))
+                {
+                    b2.forceSelect();
+                }
+                else if (b2.isSelected() &&
+                    b2.compareTo((CollisionObject)Game1.COLLISIONS["cursor"]).Equals("none"))
+                {
+                    b2.unselect();
+                }
+                else if (b2.isSelected() &&
+                    Cursor.leftClicked)
+                {
+                    b2.click();
+                }
             }
             else if (Game1.baseState.Equals("game")) // if the game is in session
             {
@@ -45,59 +63,23 @@ namespace Pikmin_4
                 List<Pikmin> pikminList = (List<Pikmin>)Game1.COLLISIONS["pikminList"];
                 for (int i = 0; i < pikminList.Count(); i++)
                 {
-                    if (pikminList.Count() <= 1  ||  i+1 == (pikminList.Count()-1))
-                        break;
                     for (int i2 = 0; i2 < pikminList.Count(); i2++)
                     {
-                        if (i == i2)
+                        if (i >= i2)
                             continue;
-                        else if (pikminList[i].compareTo(pikminList[i2]).Equals("collision"))//Jank collision (temporary)
+                        else if (pikminList[i].compareTo(pikminList[i2]).Equals("collision"))
                         {
-                            pikminList[i].collisionFromBottom();
-                            pikminList[i2].collisionFromTop();
+                            if (!pikminList[i].getCollidable())
+                                continue;
+                            pikminList[i].collision("south");
+                            pikminList[i2].collision("north");
                         }
-                        /*
-                        // Collision from the left
-                        if (pikminList[i].getX()  + (pikminList[i].getWidth() / 2) <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
-                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
-                            pikminList[i].getY() <= pikminList[i2].getY() + pikminList[i2].getHeight() &&
-                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY())
-                        {
-                            pikminList[i].collisionFromLeft();
-                            pikminList[i2].collisionFromRight();
-                        }
-                        // Collision from the right
-                        else if (pikminList[i].getX() + (pikminList[i].getWidth() / 2) >= pikminList[i2].getX() &&
-                            pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() &&
-                            pikminList[i].getY() <= pikminList[i2].getY() + pikminList[i2].getHeight() &&
-                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY())
-                        {
-                            pikminList[i].collisionFromRight();
-                            pikminList[i2].collisionFromLeft();
-                        }
-
-                        // Collision from top
-                        if (pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() && //correct
-                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() && //correct
-                            pikminList[i].getY() + pikminList[i].getHeight() >= pikminList[i2].getY() &&
-                            pikminList[i].getY() <= pikminList[i2].getY())//correct
-                        {
-                            pikminList[i].collisionFromTop();
-                            pikminList[i2].collisionFromBottom();
-                        }
-                        // Collision from bottom
-                        else if (pikminList[i].getX() + pikminList[i].getWidth() >= pikminList[i2].getX() &&
-                            pikminList[i].getX() <= pikminList[i2].getX() + pikminList[i2].getWidth() &&
-                            pikminList[i].getY() + pikminList[i].getHeight() >= (pikminList[i2].getY() + pikminList[i2].getHeight() / 2) + (pikminList[i2].getHeight() / 2) &&
-                            pikminList[i].getY() + pikminList[i].getHeight() <= pikminList[i2].getY() + pikminList[i2].getHeight())
-                        {
-                            pikminList[i].collisionFromBottom();
-                            pikminList[i2].collisionFromTop();
-                        }
-                         */
                     }
                 }
-                
+            }
+            else if (Game1.baseState.Equals("options"))//if the option screen is displayed.
+            { 
+                //Options collisions (Buttons and stuff)\\
             }
         }
     }
