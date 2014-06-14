@@ -32,15 +32,19 @@ namespace Pikmin_4
         /// <summary>
         /// 'x' position of the Pikmin.
         /// </summary>
-        private int startVelX, velX;
+        private double startVelX, velX;
         /// <summary>
         /// Pikmin's velocity over the y-axis.
         /// </summary>
-        private int startVelY, velY;
+        private double startVelY, velY;
         /// <summary>
         /// Pikmin's image width.
         /// </summary>
-        private int attackPower;
+        private float attackPower;
+        /// <summary>
+        /// Pikmin's range of vision
+        /// </summary>
+        private float sight;
         /// <summary>
         /// Collision from the left
         /// </summary>
@@ -84,7 +88,7 @@ namespace Pikmin_4
         /// <param name="lvl">(int) Level of the Pikmin</param>
         /// <param name="nx">(int) 'x' position of the Pikmin</param>
         /// <param name="ny">(int) 'y' position of the Pikmin</param>
-        public Pikmin(String typ, int lvl, int nx, int ny) : base("Pikmin",nx,ny)
+        public Pikmin(String typ, int lvl, float nx, float ny) : base("Pikmin",nx,ny)
         {
             type = typ;
             level = lvl;
@@ -110,10 +114,11 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];
 
-                    velX = 2;
-                    velY = 2;
+                    velX = 1;
+                    velY = 1;
                     setWidth(frontImage.Width);
                     setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Blue Bud
@@ -125,12 +130,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 2;
-                    velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1.5;
+                    velY = 1.5;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Blue Flower
@@ -144,10 +146,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             }
@@ -162,12 +161,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];
 
-                    velX = 2;
-                    velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1;
+                    velY = 1;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Red Bud
@@ -179,12 +175,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 2;
-                    velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1.5;
+                    velY = 1.5;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Red Flower
@@ -198,10 +191,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             }
@@ -216,12 +206,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];
 
-                    velX = 2;
-                    velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1;
+                    velY = 1;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Yellow Bud
@@ -233,12 +220,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 2;
-                    velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1.5;
+                    velY = 1.5;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Yellow Flower
@@ -252,10 +236,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             }
@@ -270,12 +251,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];
 
-                    velX = 3;
-                    velY = 3;
-                    startVelX = 3;
-                    startVelY = 3;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 1.5;
+                    velY = 1.5;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //White Bud
@@ -287,12 +265,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED BUD IMAGE ***\\
 
-                    velX = 3;
-                    velY = 3;
-                    startVelX = 3;
-                    startVelY = 3;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 2.5;
+                    velY = 2.5;
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //White Flower
@@ -304,12 +279,9 @@ namespace Pikmin_4
 
                     frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED FLOWER IMAGE ***\\
 
-                    velX = 4;
-                    velY = 4;
-                    startVelX = 3;
-                    startVelY = 3;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    velX = 3.5;
+                    velY = 3.5;
+                    sight = 0;
                     attackPower = 0;
                 }
             }
@@ -327,10 +299,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Purple Bud
@@ -344,10 +313,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Purple Flower
@@ -361,10 +327,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             */
@@ -382,10 +345,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Rock Bud
@@ -399,10 +359,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Rock Flower
@@ -416,10 +373,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             */
@@ -437,10 +391,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Flying Bud
@@ -454,10 +405,7 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
                 else //Flying Flower
@@ -471,13 +419,16 @@ namespace Pikmin_4
 
                     velX = 2;
                     velY = 2;
-                    startVelX = 2;
-                    startVelY = 2;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
+                    sight = 0;
                     attackPower = 0;
                 }
             */
+            setBuffer((int)(10-velX*2));
+            startVelX = velX;
+            startVelY = velY;
+            setStand(frontImage);
+            setWidth(frontImage.Width);
+            setHeight(frontImage.Height);
             setRightAnimations(rightAnimation);
             setLeftAnimations(rightAnimation);//TEMPORARY\\
             
@@ -492,52 +443,49 @@ namespace Pikmin_4
         /// <param name="loc">(Vector2) location</param>
         public void moveTowards(Vector2 loc)
         {
+            this.reanimate();
             if (getX() < loc.X)
                 if ((loc.X - getX()) <= velX)
                     setX((int)(getX() + (loc.X - getX())));
                 else
-                    setX((int)(getX() + velX));
+                    move("east");
             else if (getX() > loc.X)
                 if ((getX() - loc.X) <= velX)
                     setX((int)(getX() - (getX() - loc.X)));
                 else
-                    setX((int)(getX() - velX));
+                    move("west");
 
 
             if (getY() < loc.Y)
                 if ((loc.Y - getY()) <= velY)
                     setY((int)(getY() + (loc.Y - getY())));
                 else
-                    setY((int)(getY() + velY));
+                    move("south");
             else if (getY() > loc.Y)
                 if ((getY() - loc.Y) <= velY)
                     setY((int)(getY() - (getY() - loc.Y)));
                 else
-                    setY((int)(getY() - velY));
+                    move("north");
 
-            if (westCollision)
+            if (northCollision)
             {
-                setY((int)(getY()-1.5*velY));
-                //position.Y -= height;
-                westCollision = false;
+                northCollision = false;
+                move("south");
             }
             else if (eastCollision)
             {
-                setY((int)(getY()+1.5*velY));
-                //position.Y += height;
                 eastCollision = false;
+                move("west");
             }
             else if (southCollision)
             {
-                setX((int)(getX()+1.5*velX));
-                //position.X += width;
                 southCollision = false;
+                move("north");
             }
-            else if (northCollision)
+            else if (westCollision)
             {
-                setX((int)(getX()-1.5*velX));
-                //position.X -= width;
-                northCollision = false;
+                westCollision = false;
+                move("east");
             }
         }
 
@@ -549,7 +497,10 @@ namespace Pikmin_4
         public void move(string direction)
         {
             if (direction.Equals("none"))
+            {
+                this.unanimate();
                 return;
+            }
             else if (direction.Equals("north"))
             {
                 setY((int)(getY() - velY));
@@ -586,8 +537,7 @@ namespace Pikmin_4
                 setY((int)(getY() - velY));
                 setX((int)(getX() - velX));
             }
-
-
+            this.reanimate();
 
             if (northCollision)
             {
@@ -613,35 +563,63 @@ namespace Pikmin_4
 
 
         /// <summary>
-        /// If a collision is detected from the left, this is called
+        /// If any collision is detected
         /// </summary>
-        public void collisionFromLeft()
+        /// <param name="type">(string) type of collision</param>
+        public void collision(string type)
         {
-            westCollision = true;
+            if (type.Equals("west"))
+                westCollision = true;
+            else if (type.Equals("east"))
+                eastCollision = true;
+            else if (type.Equals("north"))
+                northCollision = true;
+            else if (type.Equals("south"))
+                southCollision = true;
+        }
+
+
+        public string getType()
+        {
+            return type;
+        }
+
+
+        /// <summary>
+        /// Levels the pikmin to the next life cycle
+        /// </summary>
+        public void levelUp()
+        {
+            if (level == 3)
+                return;
+            level += 1;
+            initPikmin();
         }
 
         /// <summary>
-        /// If a collision is detected from the right, this is called
+        /// Brings the pikmin back to the leaf stage in it's life cycle.
         /// </summary>
-        public void collisionFromRight()
+        public void levelDown()
         {
-            eastCollision = true;
+            level = 1;
+            initPikmin();
         }
 
-        /// <summary>
-        /// If a collision is detected from the top, this is called
-        /// </summary>
-        public void collisionFromTop()
-        {
-            northCollision = true;
-        }
 
         /// <summary>
-        /// If a collision is detected from the bottom, this is called
+        /// Compares the positions of an object compared to this one
         /// </summary>
-        public void collisionFromBottom()
+        /// <param name="o">object used for comparison</param>
+        new public string compareTo(CollisionObject o)
         {
-            southCollision = true;
+            if (this.getX() + this.getWidth() >= o.getX() &&
+                this.getX() <= o.getX() + o.getWidth() &&
+                this.getY() + this.getHeight() >= o.getY() &&
+                this.getY() <= o.getY() + o.getHeight())
+            {
+                return "collision";
+            }
+            return "none";
         }
 
     }
