@@ -26,27 +26,32 @@ namespace Pikmin_4
             westCollision = false;
             northCollision = false;
             southCollision = false;
+            Dictionary<String, Texture2D> aniDict = new Dictionary<String, Texture2D>();
+            #region Olimar
             if (type.Equals("olimar"))
             {
-                right.Add(Game1.PLAYER_IMAGES["olimarRight1"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight2"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight3"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight4"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight5"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight4"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight3"]);
-                right.Add(Game1.PLAYER_IMAGES["olimarRight2"]);
+                aniDict.Add("right1", Game1.PLAYER_IMAGES["olimarRight1"]);
+                aniDict.Add("right2", Game1.PLAYER_IMAGES["olimarRight2"]);
+                aniDict.Add("right3", Game1.PLAYER_IMAGES["olimarRight3"]);
+                aniDict.Add("right4", Game1.PLAYER_IMAGES["olimarRight4"]);
+                aniDict.Add("right5", Game1.PLAYER_IMAGES["olimarRight5"]);
+                aniDict.Add("right6", Game1.PLAYER_IMAGES["olimarRight4"]);
+                aniDict.Add("right7", Game1.PLAYER_IMAGES["olimarRight3"]);
+                aniDict.Add("right8", Game1.PLAYER_IMAGES["olimarRight2"]);
 
-                this.setRightAnimations(right);
-                this.setLeftAnimations(right);
-                this.setStand(right[2]);
-                this.setWidth(right[2].Width);
-                this.setHeight(right[2].Height);
+                aniDict.Add("stand", Game1.PLAYER_IMAGES["olimarRight2"]);
+
                 this.setBuffer((int)(8 - velX * 2));
 
                 velX = 4;
                 velY = 4;
             }
+            #endregion
+
+            this.setAnimations(aniDict);
+            this.setWidth(aniDict["stand"].Width);
+            this.setHeight(aniDict["stand"].Height);
+            this.maxAniCount = 8;
         }
 
 
@@ -119,6 +124,101 @@ namespace Pikmin_4
                 westCollision = false;
                 move("east");
             }
+        }
+
+
+        new public void draw(SpriteBatch spriteBatch)
+        {
+            #region Right movement
+            if (this.facingRight)
+            {
+                if (this.aniCount > this.maxAniCount)
+                    this.aniCount = 1;
+                switch (this.aniCount)
+                {
+                    case 1:
+                        spriteBatch.Draw(animations["right1"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 2:
+                        spriteBatch.Draw(animations["right2"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 3:
+                        spriteBatch.Draw(animations["right3"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 4:
+                        spriteBatch.Draw(animations["right4"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 5:
+                        spriteBatch.Draw(animations["right5"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 6:
+                        spriteBatch.Draw(animations["right6"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 7:
+                        spriteBatch.Draw(animations["right7"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 8:
+                        spriteBatch.Draw(animations["right8"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+            #region Left movement (Under Construction)
+            if (this.facingLeft)
+            {
+                if (this.aniCount > this.maxAniCount)
+                    this.aniCount = 1;
+                switch (this.aniCount)
+                {
+                    case 1:
+                        spriteBatch.Draw(animations["right1"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 2:
+                        spriteBatch.Draw(animations["right2"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 3:
+                        spriteBatch.Draw(animations["right3"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 4:
+                        spriteBatch.Draw(animations["right4"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 5:
+                        spriteBatch.Draw(animations["right5"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 6:
+                        spriteBatch.Draw(animations["right6"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 7:
+                        spriteBatch.Draw(animations["right7"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 8:
+                        spriteBatch.Draw(animations["right8"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+            else
+                spriteBatch.Draw(animations["stand"], this.position, Color.White);
         }
     }
 }
