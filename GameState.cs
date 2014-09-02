@@ -20,7 +20,7 @@ namespace Pikmin_4
 
         public static bool isInitiated = false;
 
-        private static Cursor cursor;
+        public static Cursor cursor;
 
         /// <summary>
         /// Initiates the static GameState class.
@@ -84,14 +84,14 @@ namespace Pikmin_4
                 for (int i = 0; i < allPikmin.Count(); i++)
                     allPikmin[i].levelDown();
             }
+
+            string direction = "none";
             if (Game1.kbState.IsKeyDown(Keys.J))
             {
                 for (int i = 0; i < allPikmin.Count(); i++)
                     allPikmin[i].moveTowards(new Vector2(cursor.getX(), cursor.getY()));
             }
-
-            string direction = "none";
-            if (Game1.kbState.IsKeyDown(Keys.D))
+            else if (Game1.kbState.IsKeyDown(Keys.D))
             {
                 direction = "east";
                 if (Game1.kbState.IsKeyDown(Keys.W))
