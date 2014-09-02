@@ -111,9 +111,9 @@ namespace Pikmin_4
         /// <param name="nx">x position</param>
         /// <param name="ny">y position</param>
         /// <param name="image">the image to display for this object</param>
-        public CollisionObject(String typ, float nx, float ny, Texture2D image)
+        public CollisionObject(String tyyp, float nx, float ny, Texture2D image)
         {
-            type = typ;
+            type = tyyp;
             x = nx;
             y = ny;
             position = new Vector2(nx, ny);
