@@ -160,55 +160,60 @@ namespace Pikmin_4
             PLAYER_IMAGES.Add("olimarRight3", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk3"));
             PLAYER_IMAGES.Add("olimarRight4", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk4"));
             PLAYER_IMAGES.Add("olimarRight5", Content.Load<Texture2D>("PlayerAnimation/olimar_right_walk5"));
+            PLAYER_IMAGES.Add("whistle1", Content.Load<Texture2D>("PlayerAnimation/whistle_1"));
+            PLAYER_IMAGES.Add("whistle2", Content.Load<Texture2D>("PlayerAnimation/whistle_2"));
+            PLAYER_IMAGES.Add("whistle3", Content.Load<Texture2D>("PlayerAnimation/whistle_3"));
 
             // Adds all the images for pikmin to this dictionary.
-            PIKMIN_IMAGES.Add("blueLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Blue_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("redLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Red_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("yellowLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Yellow_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("whiteLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_White_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("purpleLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Purple_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("rockLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Rock_Pikmin_Front"));
-            PIKMIN_IMAGES.Add("flyingLeafFront", Content.Load<Texture2D>("PikminAnimation/Leaf_Flying_Pikmin_Front"));
+            PIKMIN_IMAGES.Add("blueLeafFront", Content.Load<Texture2D>("PikminAnimation/Blue/blue_leaf_stand"));
+            PIKMIN_IMAGES.Add("blueBudFront", Content.Load<Texture2D>("PikminAnimation/Blue/blue_bud_stand"));
+            PIKMIN_IMAGES.Add("blueFlowerFront", Content.Load<Texture2D>("PikminAnimation/Blue/blue_flower_stand"));
+            PIKMIN_IMAGES.Add("redLeafFront", Content.Load<Texture2D>("PikminAnimation/Red/red_leaf_stand"));
+            PIKMIN_IMAGES.Add("yellowLeafFront", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_leaf_stand"));
+            PIKMIN_IMAGES.Add("whiteLeafFront", Content.Load<Texture2D>("PikminAnimation/White/white_leaf_stand"));
+            PIKMIN_IMAGES.Add("purpleLeafFront", Content.Load<Texture2D>("PikminAnimation/Purple/purple_leaf_stand"));
+            PIKMIN_IMAGES.Add("rockLeafFront", Content.Load<Texture2D>("PikminAnimation/Rock/rock_leaf_stand"));
+            PIKMIN_IMAGES.Add("flyingLeafFront", Content.Load<Texture2D>("PikminAnimation/Flying/flying_leaf_stand"));
 
-            PIKMIN_IMAGES.Add("blueLeafRight1", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_1"));
-            PIKMIN_IMAGES.Add("blueLeafRight2", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_2"));
-            PIKMIN_IMAGES.Add("blueLeafRight3", Content.Load<Texture2D>("PikminAnimation/blue_leaf_walk_3"));
-            PIKMIN_IMAGES.Add("blueBudRight1", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_1"));
-            PIKMIN_IMAGES.Add("blueBudRight2", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_2"));
-            PIKMIN_IMAGES.Add("blueBudRight3", Content.Load<Texture2D>("PikminAnimation/blue_bud_walk_3"));
-            PIKMIN_IMAGES.Add("blueFlowerRight1", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_1"));
-            PIKMIN_IMAGES.Add("blueFlowerRight2", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_2"));
-            PIKMIN_IMAGES.Add("blueFlowerRight3", Content.Load<Texture2D>("PikminAnimation/blue_flower_walk_3"));
+            PIKMIN_IMAGES.Add("blueLeafRight1", Content.Load<Texture2D>("PikminAnimation/Blue/blue_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("blueLeafRight2", Content.Load<Texture2D>("PikminAnimation/Blue/blue_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("blueLeafRight3", Content.Load<Texture2D>("PikminAnimation/Blue/blue_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("blueBudRight1", Content.Load<Texture2D>("PikminAnimation/Blue/blue_bud_walk_1"));
+            PIKMIN_IMAGES.Add("blueBudRight2", Content.Load<Texture2D>("PikminAnimation/Blue/blue_bud_walk_2"));
+            PIKMIN_IMAGES.Add("blueBudRight3", Content.Load<Texture2D>("PikminAnimation/Blue/blue_bud_walk_3"));
+            PIKMIN_IMAGES.Add("blueFlowerRight1", Content.Load<Texture2D>("PikminAnimation/Blue/blue_flower_walk_1"));
+            PIKMIN_IMAGES.Add("blueFlowerRight2", Content.Load<Texture2D>("PikminAnimation/Blue/blue_flower_walk_2"));
+            PIKMIN_IMAGES.Add("blueFlowerRight3", Content.Load<Texture2D>("PikminAnimation/Blue/blue_flower_walk_3"));
 
-            PIKMIN_IMAGES.Add("redLeafRight1", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_1"));
-            PIKMIN_IMAGES.Add("redLeafRight2", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_2"));
-            PIKMIN_IMAGES.Add("redLeafRight3", Content.Load<Texture2D>("PikminAnimation/red_leaf_walk_3"));
-            PIKMIN_IMAGES.Add("redBudRight1", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_1"));
-            PIKMIN_IMAGES.Add("redBudRight2", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_2"));
-            PIKMIN_IMAGES.Add("redBudRight3", Content.Load<Texture2D>("PikminAnimation/red_bud_walk_3"));
-            PIKMIN_IMAGES.Add("redFlowerRight1", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_1"));
-            PIKMIN_IMAGES.Add("redFlowerRight2", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_2"));
-            PIKMIN_IMAGES.Add("redFlowerRight3", Content.Load<Texture2D>("PikminAnimation/red_flower_walk_3"));
+            PIKMIN_IMAGES.Add("redLeafRight1", Content.Load<Texture2D>("PikminAnimation/Red/red_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("redLeafRight2", Content.Load<Texture2D>("PikminAnimation/Red/red_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("redLeafRight3", Content.Load<Texture2D>("PikminAnimation/Red/red_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("redBudRight1", Content.Load<Texture2D>("PikminAnimation/Red/red_bud_walk_1"));
+            PIKMIN_IMAGES.Add("redBudRight2", Content.Load<Texture2D>("PikminAnimation/Red/red_bud_walk_2"));
+            PIKMIN_IMAGES.Add("redBudRight3", Content.Load<Texture2D>("PikminAnimation/Red/red_bud_walk_3"));
+            PIKMIN_IMAGES.Add("redFlowerRight1", Content.Load<Texture2D>("PikminAnimation/Red/red_flower_walk_1"));
+            PIKMIN_IMAGES.Add("redFlowerRight2", Content.Load<Texture2D>("PikminAnimation/Red/red_flower_walk_2"));
+            PIKMIN_IMAGES.Add("redFlowerRight3", Content.Load<Texture2D>("PikminAnimation/Red/red_flower_walk_3"));
 
-            PIKMIN_IMAGES.Add("yellowLeafRight1", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_1"));
-            PIKMIN_IMAGES.Add("yellowLeafRight2", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_2"));
-            PIKMIN_IMAGES.Add("yellowLeafRight3", Content.Load<Texture2D>("PikminAnimation/yellow_leaf_walk_3"));
-            PIKMIN_IMAGES.Add("yellowBudRight1", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_1"));
-            PIKMIN_IMAGES.Add("yellowBudRight2", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_2"));
-            PIKMIN_IMAGES.Add("yellowBudRight3", Content.Load<Texture2D>("PikminAnimation/yellow_bud_walk_3"));
-            PIKMIN_IMAGES.Add("yellowFlowerRight1", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_1"));
-            PIKMIN_IMAGES.Add("yellowFlowerRight2", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_2"));
-            PIKMIN_IMAGES.Add("yellowFlowerRight3", Content.Load<Texture2D>("PikminAnimation/yellow_flower_walk_3"));
+            PIKMIN_IMAGES.Add("yellowLeafRight1", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("yellowLeafRight2", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("yellowLeafRight3", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("yellowBudRight1", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_bud_walk_1"));
+            PIKMIN_IMAGES.Add("yellowBudRight2", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_bud_walk_2"));
+            PIKMIN_IMAGES.Add("yellowBudRight3", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_bud_walk_3"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight1", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_flower_walk_1"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight2", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_flower_walk_2"));
+            PIKMIN_IMAGES.Add("yellowFlowerRight3", Content.Load<Texture2D>("PikminAnimation/Yellow/yellow_flower_walk_3"));
 
-            PIKMIN_IMAGES.Add("whiteLeafRight1", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_1"));
-            PIKMIN_IMAGES.Add("whiteLeafRight2", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_2"));
-            PIKMIN_IMAGES.Add("whiteLeafRight3", Content.Load<Texture2D>("PikminAnimation/white_leaf_walk_3"));
-            PIKMIN_IMAGES.Add("whiteBudRight1", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_1"));
-            PIKMIN_IMAGES.Add("whiteBudRight2", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_2"));
-            PIKMIN_IMAGES.Add("whiteBudRight3", Content.Load<Texture2D>("PikminAnimation/white_bud_walk_3"));
-            PIKMIN_IMAGES.Add("whiteFlowerRight1", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_1"));
-            PIKMIN_IMAGES.Add("whiteFlowerRight2", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_2"));
-            PIKMIN_IMAGES.Add("whiteFlowerRight3", Content.Load<Texture2D>("PikminAnimation/white_flower_walk_3"));
+            PIKMIN_IMAGES.Add("whiteLeafRight1", Content.Load<Texture2D>("PikminAnimation/White/white_leaf_walk_1"));
+            PIKMIN_IMAGES.Add("whiteLeafRight2", Content.Load<Texture2D>("PikminAnimation/White/white_leaf_walk_2"));
+            PIKMIN_IMAGES.Add("whiteLeafRight3", Content.Load<Texture2D>("PikminAnimation/White/white_leaf_walk_3"));
+            PIKMIN_IMAGES.Add("whiteBudRight1", Content.Load<Texture2D>("PikminAnimation/White/white_bud_walk_1"));
+            PIKMIN_IMAGES.Add("whiteBudRight2", Content.Load<Texture2D>("PikminAnimation/White/white_bud_walk_2"));
+            PIKMIN_IMAGES.Add("whiteBudRight3", Content.Load<Texture2D>("PikminAnimation/White/white_bud_walk_3"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight1", Content.Load<Texture2D>("PikminAnimation/White/white_flower_walk_1"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight2", Content.Load<Texture2D>("PikminAnimation/White/white_flower_walk_2"));
+            PIKMIN_IMAGES.Add("whiteFlowerRight3", Content.Load<Texture2D>("PikminAnimation/White/white_flower_walk_3"));
 
 
             //Adds images for enemies and animations for enemies.
@@ -279,20 +284,20 @@ namespace Pikmin_4
             
             if(baseState.Equals("main")) //Frame is on the title screen
             {
-                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["titleCursor"])
-                    cursor.setImage(0, FOREGROUND_IMAGES["titleCursor"]);
+                if (cursor.getStandingImage() != FOREGROUND_IMAGES["titleCursor"])
+                    cursor.setStand(FOREGROUND_IMAGES["titleCursor"]);
                 spriteBatch.Draw(TITLE_IMAGES["background"], new Vector2(0, 0), Color.White);
                 spriteBatch.Draw(TITLE_IMAGES["title"], new Vector2(100, 25), Color.White);
 
                 if (playButton.isSelected())
-                    spriteBatch.Draw(playButton.getCurrentImage(), playButton.getPosition(), Color.LimeGreen);
+                    spriteBatch.Draw(playButton.getStandingImage(), playButton.getPosition(), Color.LimeGreen);
                 else
-                    spriteBatch.Draw(playButton.getCurrentImage(), playButton.getPosition(), Color.White);
+                    spriteBatch.Draw(playButton.getStandingImage(), playButton.getPosition(), Color.White);
 
                 if (optionButton.isSelected())
-                    spriteBatch.Draw(optionButton.getCurrentImage(), optionButton.getPosition(), Color.LimeGreen);
+                    spriteBatch.Draw(optionButton.getStandingImage(), optionButton.getPosition(), Color.LimeGreen);
                 else
-                    spriteBatch.Draw(optionButton.getCurrentImage(), optionButton.getPosition(), Color.White);
+                    spriteBatch.Draw(optionButton.getStandingImage(), optionButton.getPosition(), Color.White);
 
                 cursor.draw(spriteBatch);
                 if (playButton.isClicked())
@@ -300,18 +305,18 @@ namespace Pikmin_4
             }
             else if (baseState.Equals("game")) //Frame is on the game screen
             {
-                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["gameCursor"])
+                if (cursor.getStandingImage() != FOREGROUND_IMAGES["gameCursor"])
                 {
                     GameState.initiate(cursor);
-                    cursor.setImage(0, FOREGROUND_IMAGES["gameCursor"]);
+                    cursor.setStand(FOREGROUND_IMAGES["gameCursor"]);
                 }
                 cursor.draw(spriteBatch);
                 GameState.draw(spriteBatch);
             }
             else if (baseState.Equals("options"))
             {
-                if (cursor.getCurrentImage() != FOREGROUND_IMAGES["titleCursor"])
-                    cursor.setImage(0, FOREGROUND_IMAGES["titleCursor"]);
+                if (cursor.getStandingImage() != FOREGROUND_IMAGES["titleCursor"])
+                    cursor.setStand(FOREGROUND_IMAGES["titleCursor"]);
                 cursor.draw(spriteBatch);
                 OptionState.draw(spriteBatch);
             }
