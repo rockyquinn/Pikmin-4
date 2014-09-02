@@ -11,10 +11,6 @@ namespace Pikmin_4
     class Pikmin : CollisionObject
     {
         /// <summary>
-        /// Image of Pikmin facing the user.
-        /// </summary>
-        private Texture2D frontImage;
-        /// <summary>
         /// String representation of the Color/Type of a Pikmin:
         ///     "red":      Fire pikmin
         ///     "blue":     Water pikmin
@@ -93,6 +89,8 @@ namespace Pikmin_4
             type = typ;
             level = lvl;
 
+            this.maxAniCount = 4;
+
             initPikmin();
         }
 
@@ -102,33 +100,32 @@ namespace Pikmin_4
         /// </summary>
         public void initPikmin()
         {
-            List<Texture2D> rightAnimation = new List<Texture2D>();
+            Dictionary<String,Texture2D> aniDict = new Dictionary<String,Texture2D>();
+            #region Blue Pikmin
             if (type.Equals("blue")) //Blue
             {
                 if (level == 1) //Blue Leaf
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueLeafRight2"]);
+                    aniDict.Add("right1",Game1.PIKMIN_IMAGES["blueLeafRight1"]);
+                    aniDict.Add("right2",Game1.PIKMIN_IMAGES["blueLeafRight2"]);
+                    aniDict.Add("right3",Game1.PIKMIN_IMAGES["blueLeafRight3"]);
+                    aniDict.Add("right4",Game1.PIKMIN_IMAGES["blueLeafRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];
+                    aniDict.Add("stand",Game1.PIKMIN_IMAGES["blueLeafFront"]);
 
                     velX = 1;
                     velY = 1;
-                    setWidth(frontImage.Width);
-                    setHeight(frontImage.Height);
                     sight = 0;
                     attackPower = 0;
                 }
                 else if (level == 2) //Blue Bud
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueBudRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["blueBudRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["blueBudRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["blueBudRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["blueBudRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];//*** NEED BUD IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["blueBudFront"]);
 
                     velX = 1.5;
                     velY = 1.5;
@@ -137,12 +134,12 @@ namespace Pikmin_4
                 }
                 else //Blue Flower
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["blueFlowerRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["blueFlowerRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["blueFlowerRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["blueLeafFront"];//*** NEED FLOWER IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["blueFlowerFront"]);
 
                     velX = 2;
                     velY = 2;
@@ -150,16 +147,18 @@ namespace Pikmin_4
                     attackPower = 0;
                 }
             }
+            #endregion
+            #region Red Pikmin
             else if (type.Equals("red")) //Red
             {
                 if (level == 1) //Red Leaf
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redLeafRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["redLeafRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["redLeafRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["redLeafRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["redLeafRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["redLeafFront"]);
 
                     velX = 1;
                     velY = 1;
@@ -168,12 +167,12 @@ namespace Pikmin_4
                 }
                 else if (level == 2) //Red Bud
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redBudRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["redBudRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["redBudRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["redBudRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["redBudRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];//*** NEED BUD IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["redLeafFront"]);//*** NEED BUD IMAGE ***\\
 
                     velX = 1.5;
                     velY = 1.5;
@@ -182,12 +181,12 @@ namespace Pikmin_4
                 }
                 else //Red Flower
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["redFlowerRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["redFlowerRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["redFlowerRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["redFlowerRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["redFlowerRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["redLeafFront"];//*** NEED FLOWER IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["redLeafFront"]);//*** NEED FLOWER IMAGE ***\\
 
                     velX = 2;
                     velY = 2;
@@ -195,16 +194,18 @@ namespace Pikmin_4
                     attackPower = 0;
                 }
             }
+            #endregion
+            #region Yellow Pikmin
             else if(type.Equals("yellow")) //Yellow
             {
                 if(level == 1) //Yellow Leaf
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["yellowLeafRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["yellowLeafRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["yellowLeafRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["yellowLeafFront"]);
 
                     velX = 1;
                     velY = 1;
@@ -213,12 +214,12 @@ namespace Pikmin_4
                 }
                 else if (level == 2) //Yellow Bud
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowBudRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["yellowBudRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["yellowBudRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["yellowBudRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["yellowBudRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];//*** NEED BUD IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["yellowLeafFront"]);//*** NEED BUD IMAGE ***\\
 
                     velX = 1.5;
                     velY = 1.5;
@@ -227,12 +228,12 @@ namespace Pikmin_4
                 }
                 else //Yellow Flower
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["yellowFlowerRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["yellowFlowerRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["yellowFlowerRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["yellowLeafFront"];//*** NEED FLOWER IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["yellowLeafFront"]);//*** NEED FLOWER IMAGE ***\\
 
                     velX = 2;
                     velY = 2;
@@ -240,16 +241,18 @@ namespace Pikmin_4
                     attackPower = 0;
                 }
             }
+            #endregion
+            #region White Pikmin
             else if (type.Equals("white")) //White
             {
                 if (level == 1) //White Leaf
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["whiteLeafRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["whiteLeafRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["whiteLeafRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["whiteLeafFront"]);
 
                     velX = 1.5;
                     velY = 1.5;
@@ -258,12 +261,12 @@ namespace Pikmin_4
                 }
                 else if (level == 2) //White Bud
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteBudRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["whiteBudRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["whiteBudRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["whiteBudRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["whiteBudRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED BUD IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["whiteLeafFront"]);//*** NEED BUD IMAGE ***\\
 
                     velX = 2.5;
                     velY = 2.5;
@@ -272,12 +275,12 @@ namespace Pikmin_4
                 }
                 else //White Flower
                 {
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight1"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight3"]);
-                    rightAnimation.Add(Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
+                    aniDict.Add("right1", Game1.PIKMIN_IMAGES["whiteFlowerRight1"]);
+                    aniDict.Add("right2", Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
+                    aniDict.Add("right3", Game1.PIKMIN_IMAGES["whiteFlowerRight3"]);
+                    aniDict.Add("right4", Game1.PIKMIN_IMAGES["whiteFlowerRight2"]);
 
-                    frontImage = Game1.PIKMIN_IMAGES["whiteLeafFront"];//*** NEED FLOWER IMAGE ***\\
+                    aniDict.Add("stand", Game1.PIKMIN_IMAGES["whiteLeafFront"]);//*** NEED FLOWER IMAGE ***\\
 
                     velX = 3.5;
                     velY = 3.5;
@@ -285,6 +288,8 @@ namespace Pikmin_4
                     attackPower = 0;
                 }
             }
+            #endregion
+            #region Purple Pikmin
             /*
             else if (type.Equals("purple")) //Purple
             {
@@ -330,7 +335,10 @@ namespace Pikmin_4
                     sight = 0;
                     attackPower = 0;
                 }
+            }
             */
+            #endregion
+            #region Rock Pikmin
             /*
             else if (type.Equals("rock")) //Rock
             {
@@ -376,7 +384,10 @@ namespace Pikmin_4
                     sight = 0;
                     attackPower = 0;
                 }
+            }
             */
+            #endregion
+            #region Flying Pikmin
             /*
             else if (type.Equals("flying")) //Flying
             {
@@ -422,15 +433,16 @@ namespace Pikmin_4
                     sight = 0;
                     attackPower = 0;
                 }
+            }
             */
+            #endregion
+
             setBuffer((int)(10-velX*2));
             startVelX = velX;
             startVelY = velY;
-            setStand(frontImage);
-            setWidth(frontImage.Width);
-            setHeight(frontImage.Height);
-            setRightAnimations(rightAnimation);
-            setLeftAnimations(rightAnimation);//TEMPORARY\\
+            setWidth(aniDict["stand"].Width);
+            setHeight(aniDict["stand"].Height);
+            setAnimations(aniDict);
             
         }
         ///////////////////////////////
@@ -622,5 +634,67 @@ namespace Pikmin_4
             return "none";
         }
 
+
+        new public void draw(SpriteBatch spriteBatch)
+        {
+            #region Right movement
+            if (this.facingRight)
+            {
+                if (this.aniCount > this.maxAniCount)
+                    this.aniCount = 1;
+                switch (this.aniCount)
+                {
+                    case 1:
+                        spriteBatch.Draw(animations["right1"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 2:
+                        spriteBatch.Draw(animations["right2"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 3:
+                        spriteBatch.Draw(animations["right3"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 4:
+                        spriteBatch.Draw(animations["right4"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+            #region Left movement (Under Construction)
+            else if (this.facingLeft)
+            {
+                if (this.aniCount > this.maxAniCount)
+                    this.aniCount = 1;
+                switch (this.aniCount)
+                {
+                    case 1:
+                        spriteBatch.Draw(animations["right1"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 2:
+                        spriteBatch.Draw(animations["right2"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 3:
+                        spriteBatch.Draw(animations["right3"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    case 4:
+                        spriteBatch.Draw(animations["right4"], this.position, Color.White);
+                        this.aniCount++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            #endregion
+            else
+                spriteBatch.Draw(animations["stand"], this.position, Color.White);
+        }
     }
 }
