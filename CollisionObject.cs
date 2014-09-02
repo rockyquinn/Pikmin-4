@@ -13,7 +13,7 @@ namespace Pikmin_4
         /// <summary>
         /// The position of this object
         /// </summary>
-        private Vector2 position;
+        public Vector2 position;
 
         /// <summary>
         /// The Child objects Type
@@ -23,62 +23,59 @@ namespace Pikmin_4
         /// <summary>
         /// True if the object can be collided with everything
         /// </summary>
-        private bool isCollidable = true;
+        public bool isCollidable = true;
 
         /// <summary>
         /// True if object is moving left
         /// </summary>
-        private bool facingLeft = false;
+        public bool facingLeft = false;
 
         /// <summary>
         /// True if object is moving right
         /// </summary>
-        private bool facingRight = false;
+        public bool facingRight = false;
 
         /// <summary>
         /// The x coordinate of the object
         /// </summary>
-        private float x;
+        public float x;
 
         /// <summary>
         /// The y coordinate of the object
         /// </summary>
-        private float y;
+        public float y;
 
         /// <summary>
         /// the object's width
         /// </summary>
-        private int width;
+        public int width;
 
         /// <summary>
         /// The object's height
         /// </summary>
-        private int height;
+        public int height;
 
         /// <summary>
-        /// Animation count
+        /// Animation counter
         /// </summary>
-        private int aniCount;
+        public int aniCount;
+
+        /// <summary>
+        /// The maximum value of ani count;
+        /// if(aniCount == maxAniCount)
+        ///     aniCount = 0;
+        /// </summary>
+        public int maxAniCount;
 
         /// <summary>
         /// If true, animation will continue
         /// </summary>
-        private bool animate;
+        public bool animate;
 
         /// <summary>
-        /// All images involved in moving right
+        /// To hold all of the images used in animating this object.
         /// </summary>
-        private List<Texture2D> rightAnimations;
-
-        /// <summary>
-        /// All images involved in moving left.
-        /// </summary>
-        private List<Texture2D> leftAnimations;
-
-        /// <summary>
-        /// Image displayed when animate is false.
-        /// </summary>
-        private Texture2D stand;
+        public Dictionary<String, Texture2D> animations;
 
         /// <summary>
         /// How fast an image will be animated
@@ -95,19 +92,16 @@ namespace Pikmin_4
         /// <param name="ny">y position</param>
         /// <param name="left">images for the animation to the left</param>
         /// <param name="right">images for the animation to the right</param>
-        public CollisionObject(String typ, float nx, float ny, List<Texture2D> left, List<Texture2D> right, Texture2D still)
+        public CollisionObject(String typ, float nx, float ny, Dictionary<String,Texture2D> anis, Texture2D still)
         {
             type = typ;
             x = nx;
             y = ny;
             position = new Vector2(nx, ny);
-            width = left[0].Width;
-            height = left[0].Height;
-            leftAnimations = left;
-            rightAnimations = right;
+            animations = anis;
+            animations.Add("stand", still);
             aniCount = 0;
             facingLeft = true;
-            stand = still;
         }
 
         /// <summary>
@@ -125,14 +119,30 @@ namespace Pikmin_4
             position = new Vector2(nx, ny);
             width = image.Width;
             height = image.Height;
-            leftAnimations = new List<Texture2D>();
-            leftAnimations.Add(image);
-            rightAnimations = new List<Texture2D>();
-            rightAnimations.Add(image);
-            stand = image;
+            animations = new Dictionary<String, Texture2D>();
+            animations.Add("stand", image);
             aniCount = 0;
             facingLeft = true;
         }
+
+        /// <summary>
+        /// Constructor for objects that need an image to be initialized after declaration
+        /// </summary>
+        /// <param name="type">child class name</param>
+        /// <param name="nx">x position</param>
+        /// <param name="ny">y position</param>
+        public CollisionObject(String typ, float nx, float ny)
+        {
+            type = typ;
+            x = nx;
+            y = ny;
+            position = new Vector2(nx, ny);
+            animations = new Dictionary<String, Texture2D>();
+            aniCount = 0;
+            facingLeft = true;
+        }
+
+        /*
         /// <summary>
         /// A very basic constructor where other variables 
         /// must be assigned later
@@ -148,7 +158,7 @@ namespace Pikmin_4
             position = new Vector2(nx, ny);
             aniCount = 0;
             facingLeft = true;
-        }
+        }*/
 
 
         /// <summary>
@@ -190,7 +200,7 @@ namespace Pikmin_4
         /// <param name="still">new image</param>
         public void setStand(Texture2D still)
         {
-            stand = still;
+            animations["stand"] = still;
         }
 
         /// <summary>
@@ -235,43 +245,21 @@ namespace Pikmin_4
         }
 
         /// <summary>
-        /// Gets current animation image
+        /// Gets standing animation image
         /// </summary>
         /// <returns>(Texture2D) image</returns>
-        public Texture2D getCurrentImage()
+        public Texture2D getStandingImage()
         {
-            if(facingLeft)
-                return leftAnimations[aniCount];
-            return rightAnimations[aniCount];
-        }
-
-        /// <summary>
-        /// sets the image at a certain index to a new index
-        /// </summary>
-        /// <param name="index">index to be changed</param>
-        /// <param name="imag">image to change to</param>
-        public void setImage(int index, Texture2D imag)
-        {
-            leftAnimations[index] = imag;
-            rightAnimations[index] = imag;
+            return animations["stand"];
         }
 
         /// <summary>
         /// Sets the right facing animations list
         /// </summary>
-        /// <param name="l">list of Texture2D objects</param>
-        public void setRightAnimations(List<Texture2D> l)
+        /// <param name="dict">Dictionary of Texture2D objects linked to strings</param>
+        public void setAnimations(Dictionary<String,Texture2D> dict)
         {
-            rightAnimations = l;
-        }
-
-        /// <summary>
-        /// Sets the left facing animations list
-        /// </summary>
-        /// <param name="l">list of Texture2D objects</param>
-        public void setLeftAnimations(List<Texture2D> l)
-        {
-            leftAnimations = l;
+            animations = dict;
         }
 
         /// <summary>
@@ -298,20 +286,7 @@ namespace Pikmin_4
         /// <param name="spriteBatch">a SpriteBatch object</param>
         public void draw(SpriteBatch spriteBatch)
         {
-            if(!animate)
-                spriteBatch.Draw(stand, position, Color.White);
-            else if(facingLeft)
-                spriteBatch.Draw(leftAnimations[aniCount], position, Color.White);
-            else if(facingRight)
-                spriteBatch.Draw(rightAnimations[aniCount], position, Color.White);
-            if (Game1.TIMER % buffer == 0)
-            {
-                if (!animate)
-                    return;
-                aniCount++;
-                if (aniCount % leftAnimations.Count() == 0)
-                    aniCount = 0;
-            }
+            spriteBatch.Draw(animations["stand"], position, Color.White);
         }
         
         
