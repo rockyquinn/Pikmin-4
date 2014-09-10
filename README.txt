@@ -1,7 +1,7 @@
 Pikmin-4
 ===========
 
-A Pikmin sequel made in MonoGame. No copyright intended.
+A terrible Pikmin sequel made in MonoGame. No copyright intended.
 
 Block.cs            ~   Creates the blocks used in generating a map.
 Button.cs           ~   Allows me to create a clickable button.
